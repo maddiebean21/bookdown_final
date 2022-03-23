@@ -1,9 +1,22 @@
 --- 
-title: "Bookdown Final"
+title: "Final Project"
 author: "Madeline Bean"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is the final data science project for the Introduction to Data Science Course ESS 580A7."
 ---
 
-# Down the rabbit-hole
+# Introduction {-}
 
+This bookdown website is comprised of all assignments completed in Introduction to Data Science Course ESS 580A7. I completed this class in my spring semester of 2022 while getting my Professional Science Master's in Ecosystem Sciences and Sustainability.
+
+## View GitHub Code {-}
+
+The code used to build this R Bookdown is hosted on GitHub.
+
+[Final Project GitHub](https://github.com/maddiebean21/bookdown_final)
