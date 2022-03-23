@@ -10,8 +10,8 @@ always_allow_html: true
 
 rmd_files:
   - "index.Rmd"
-#  - "1-hw-poudre.Rmd"
-#  - "2-hw-hayman.Rmd"
+  - "01-hw-poudre.Rmd"
+  - "2-hw-Hayman Fire Recovery Assignment 2.Rmd"
 #  - "3-hw-snow.Rmd"
 #  - "4-1-hw-spatial.Rmd"
 # - "4-2-hw-WaterQuality.Rmd"

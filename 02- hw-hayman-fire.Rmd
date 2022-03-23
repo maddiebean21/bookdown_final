@@ -1,13 +1,8 @@
----
-title: "Hayman Fire Recovery"
-author: "Madeline Bean"
-date: "10/3/2019"
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+# Hayman Fire Recovery 
 
-```{r setup, warning=F,message=F}
+The [Hayman Fire](https://en.wikipedia.org/wiki/Hayman_Fire) occurred on June 8th, 2002. This was the largest wildfire in Colorado's history until 2020, burning over 138,000 acres of land. In this assignment, we looked at how the fire affected vegetation growth in the area. 
+
+```{r firesetup, warning=F,message=F}
 library(tidyverse)
 library(tidyr)
 library(ggthemes)
@@ -20,24 +15,24 @@ library(ggpubr)
 knitr::opts_knit$set(root.dir='..')
 ```
 
+## Reading in the Data
 
-```{r dataread, warning=F,message=F}
+```{r firedataread, warning=F,message=F,show_col_types=FALSE}
 ####-----Reading in Data and Stacking it ----- ####
 #Reading in files
-files <- list.files('data',full.names=T)
+files <- list.files('02-hw-hayman',full.names=T)
 
 
 #Read in individual data files
-ndmi <- read_csv(files[1]) %>% 
+ndmi <- read_csv('data/02-hw-hayman/hayman_ndmi.csv') %>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndmi')
 
-
-ndsi <- read_csv(files[2]) %>% 
+ndsi <- read_csv('data/02-hw-hayman/hayman_ndsi.csv') %>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndsi')
 
-ndvi <- read_csv(files[3])%>% 
+ndvi <- read_csv('data/02-hw-hayman/hayman_ndvi.csv')%>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndvi')
 
@@ -50,17 +45,11 @@ full_long <- rbind(ndvi,ndmi,ndsi) %>%
 ```
 
 
+## NDVI and NDMI Correlation 
 
+In order to find the correlation between NDVI and NDMI, we converted the full_long dataset into a wide dataset using the function "spread" and then made a plot of this function, grouped by unburned vs burned sites. We excluded winter months and focused on summer months because vegetation does not generally grow in the winter.
 
-## Question 1) 
-
-What is the correlation between NDVI and NDMI? - here I want you to
-convert the full_long dataset in to a wide dataset using the 
-function "spread" and then make a plot that shows the correlation s a
-function of if the site was burned or not (x axis should be ndmi)
-You should exclude winter months and focus on summer months
-
-```{r}
+```{r firewidedata}
 #changing data into wide
 full_wide <- spread(data=full_long,key='data',value='value') %>%
   filter_if(is.numeric,all_vars(!is.na(.))) %>%
@@ -81,14 +70,17 @@ ggplot(summer_only,aes(x=ndmi,y=ndvi,color=site)) +
 
 There is a strong, positive correlation between NDMI and NDVI. 
 
-## Question 2 
+## Average NDSI and NDVI Correlation
 
 2) What is the correlation between average NDSI (normalized
  snow index) for January - April and average NDVI for June-August?
 In other words, does the previous year's snow cover influence vegetation
  growth for the following summer?
  
-```{r warning=F, message=F}
+ 
+In order to find the correlation between the average NDSI and NDVI, we used the data points for NDSI only during January - April (snow season) and only data points for NDVI during June - August (vegetation growth season). We found that there is a low positive correlation of 0.180 between snow coverage and vegetation. This means that the previous year's snow cover has little effect on the vegetation growth for the following summer and that this correlation could be from other factors in the environment. Looking at the graph, you can see a difference in correlation between NDVI and NDSI burned and un-burned sites.
+ 
+```{r fireNDSINDVI warning=F, message=F}
 #variable ndsi months
 var.snow_months <- c(1,2,3,4)
 
@@ -121,15 +113,11 @@ ggplot(combined, aes(x=ndsi_avg, y=ndvi_avg, color=site)) +
   
 ```
  
-There is a low positive correlation of 0.180 between snow coverage and vegetation. This means that the previous year's snow cover has little effect on the vegetation growth for the following summer and that this correlation could be from other factors in the environment. Looking at the graph, you can see a difference in correlation between NDVI and NDSI burned and un-burned sites. 
+## Snow Effect Differences
 
+We then looked at the difference of snow effect from the previous correlation between pre- and post-burn and burned and unburned.
 
-## Q3
-
-How is the snow effect from question 2 different between pre- and post-burn
-and burned and unburned? 
-
-```{r warning=F, message=F}
+```{r firesnoweffect warning=F, message=F}
 #snow effect pre-burn
 preburn <- c(1984:2001)
 
@@ -219,22 +207,26 @@ cor(combined_unburned$ndvi_unburned_avg, combined_unburned$ndsi_unburned_avg)
 Preburngraph <- ggplot(combine_preburn, aes(x=ndsi_preburn_avg, y=ndvi_preburn_avg)) +
   geom_point() + 
   theme_few() + 
-  scale_color_few() 
+  scale_color_few() +
+  labs(x="Pre-burn NDSI Average", y="Pre-burn NDVI Average")
 
 Postburngraph <- ggplot(combine_postburn, aes(x=ndsi_postburn_avg, y=ndvi_postburn_avg)) +
   geom_point() + 
   theme_few() + 
-  scale_color_few() 
+  scale_color_few()+
+  labs(x="Post-burn NDSI Average", y = "Post-burn NDVI Average")
 
 Burnedgraph <- ggplot(combined_burned, aes(x=ndsi_burned_avg, y=ndvi_burned_avg)) +
   geom_point() + 
   theme_few() + 
-  scale_color_few() 
+  scale_color_few()+
+  labs(x="NDSI Burned Average", y="NDVI Burned Average")
 
 Unburnedgraph <- ggplot(combined_unburned, aes(x=ndsi_unburned_avg, y=ndvi_unburned_avg))+
   geom_point() + 
   theme_few() + 
-  scale_color_few() 
+  scale_color_few()+
+  labs(x= "Average NDSI Unburned", y="Average NDVI Unburned")
 
 #Plotting the data in one frame
 Plot <- ggarrange(Preburngraph, Postburngraph, Burnedgraph, Unburnedgraph,
@@ -256,36 +248,36 @@ For burned snow effect, the correlation is 0.087.
 The snow effect from question 2 is a more generalized correlation. While all of these variables have a weak correlation, this question isolates the different variables in the data to help determine the relationship between snow coverage and vegetation growth. The post-burn condition has the strongest correlation between the previous year's snow coverage and the vegetation growth for the following year. The weakest correlation between snow coverage and vegetation growth was for the un-burned condition. This is interesting because this could potentially mean that the Hayman Fire has pushed the vegetation growth to rely more on snow coverage to get their nutrients. This is still a weak correlation, so more research will need to be conducted to determine if this is true or not; there are many other variables in the environment that could have caused this correlation.
  
 
-## Question 4
+## Average Greenest Month
 
-What month is the greenest month on average? 
-
+Here, we looked at which month was the greenest, on average. We discovered that August was the greenest month.
 
 ```{r warning=F, message=F}
+#creating an object for the average vegetation for each month
 ndvigreenest <- full_wide[c("DateTime", "ndvi", "month", "year", "site")] %>%
   group_by(month) %>%
   summarize(ndvi=mean(ndvi))
 
+#Plotting the average vegetation for each month
 ggplot(ndvigreenest, aes(x=month, y=ndvi)) +
   geom_bar(stat="identity", fill="#009E73") +
   theme_minimal()
   
 ```
 
-The greenest month on average is August.
 
-## Question 5) 
+## Average Snowiest Month
 
-What month is the snowiest on average?
+Next, we looked at which month was the snowiest on average. January was the snowiest month.
 
 ```{r warning=F, message=F}
+#creating snow object
 ndsisnowiest <- full_wide[c("DateTime", "ndsi", "month", "year", "site")] %>%
   group_by(month) %>%
   summarize(ndsi=mean(ndsi))
 
+#plotting the snow for each month
 ggplot(ndsisnowiest, aes(x=month, y=ndsi)) +
   geom_bar(stat="identity", fill="#56B4E9") +
   theme_minimal() 
 ```
-
-The snowiest month on average is January. 

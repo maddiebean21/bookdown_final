@@ -51,7 +51,7 @@ q <- readNWISdv(siteNumbers = '06752260',
 ### Static Data Plotter
 
 
-```{r, poudreplotter warning = FALSE, fig.width = 8, fig.height = 5}
+```{r, poudreplotter, warning = FALSE, fig.width = 8, fig.height = 5}
 
 ggplot(q, aes(x = Date, y = q)) + 
   geom_line() + 
