@@ -51,7 +51,7 @@ q <- readNWISdv(siteNumbers = '06752260',
 ### Static Data Plotter
 
 
-```{r, warning = FALSE, fig.width = 8, fig.height = 5}
+```{r, poudreplotter warning = FALSE, fig.width = 8, fig.height = 5}
 
 ggplot(q, aes(x = Date, y = q)) + 
   geom_line() + 
@@ -64,23 +64,20 @@ ggplot(q, aes(x = Date, y = q)) +
 ### Interactive Data Plotter
 
 
-```{r}
+```{r poudreinteractiveplotter}
 
 q_xts <- xts(q$q, order.by = q$Date)
 
-
+#plotting
 dygraph(q_xts) %>%
   dyAxis("y", label = "Discharge (cfs)") 
 ```
 
-This assignment will be primarily about demonstrating some expertice in using
-RMarkdown, since we will be using Rmds as the primary form of homework and 
-assignments. With that in mind, your assignment for this homework is to:
-
 
 ## Interactive Graph
 
-```{r}
+```{r poudreassignment}
+#creating an interactive graph
 dygraph(q_xts) %>%
   dyOptions(drawPoints = TRUE, pointSize = 2)
   
