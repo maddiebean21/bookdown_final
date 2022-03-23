@@ -1,0 +1,98 @@
+#Poudre River Interactive Graph
+
+The Poudre River runs through northern Colorado, passing through Fort Collins, CO. In this assignment, we look at the the annual discharge of the river to determine annual patterns and severe weather events.
+
+```{r poudresetup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(dataRetrieval)
+library(dygraphs)
+library(xts)
+```
+
+
+## Methods
+
+The Poudre River at Lincoln Bridge is:
+
+  - Downstream of only a little bit of urban stormwater
+
+  - Near Odell Brewing CO
+  
+  - Near an open space area and the Poudre River Trail
+  
+  - **Downstream of many agricultural diversions**
+
+
+## Site Description
+
+![](https://waterdata.usgs.gov/nwisweb/local/state/co/text/pics/06752260big.jpg)
+
+
+## Data Acquisition and Plotting Tests
+
+### Data Download
+
+
+```{r Poudredatadownloader}
+
+q <- readNWISdv(siteNumbers = '06752260',
+                parameterCd = '00060',
+                startDate = '2017-01-01',
+                endDate = '2022-01-01') %>%
+  rename(q = 'X_00060_00003')
+
+
+```
+
+
+
+### Static Data Plotter
+
+
+```{r, warning = FALSE, fig.width = 8, fig.height = 5}
+
+ggplot(q, aes(x = Date, y = q)) + 
+  geom_line() + 
+  ylab('Q (cfs)') + 
+  ggtitle('Discharge in the Poudre River, Fort Collins')
+
+```
+
+
+### Interactive Data Plotter
+
+
+```{r}
+
+q_xts <- xts(q$q, order.by = q$Date)
+
+
+dygraph(q_xts) %>%
+  dyAxis("y", label = "Discharge (cfs)") 
+```
+
+This assignment will be primarily about demonstrating some expertice in using
+RMarkdown, since we will be using Rmds as the primary form of homework and 
+assignments. With that in mind, your assignment for this homework is to:
+
+
+## Interactive Graph
+
+```{r}
+dygraph(q_xts) %>%
+  dyOptions(drawPoints = TRUE, pointSize = 2)
+  
+```
+
+## Information about the Poudre River
+
+**The History of the Poudre River**
+
+The Cache la Poudre River got its name from a group of French trappers that hid their gun powder on the banks of the river to lighten their wagons. Hence the translation of the name to be the *"hiding place of the powder."* Since the 1800's, the Poudre River has been a vital resource for the Northern Colorado community. From industrial to agricultural and to residential use, the water from the Poudre river is in great demand. 
+
+**Poudre River Geomorphology**
+
+The Poudre River starts high in the [Rocky Mountain National Park](https://www.nps.gov/romo/index.htm) peaks and flows north east through the [Roosevelt National Forest](https://www.fs.usda.gov/arp), slowly making its way through the city of Fort Collins. There are a lot of [recreational activities](https://www.visitftcollins.com/things-to-do/parks-open-spaces/cache-la-poudre-river/) that occur along the river, including hiking, biking, kayaking, and white water rafting. However, because of the multiple reservoirs that consume water from the Poudre, the once rapid, flowing river is now only a trickling stream in some areas, especially during the winter months. 
+
