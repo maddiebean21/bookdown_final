@@ -24,15 +24,15 @@ files <- list.files('02-hw-hayman',full.names=T)
 
 
 #Read in individual data files
-ndmi <- read_csv('data/02-hw-hayman/hayman_ndmi.csv') %>% 
+ndmi <- read_csv('/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/02-hw-hayman/hayman_ndmi.csv') %>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndmi')
 
-ndsi <- read_csv('data/02-hw-hayman/hayman_ndsi.csv') %>% 
+ndsi <- read_csv('/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/02-hw-hayman/hayman_ndsi.csv') %>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndsi')
 
-ndvi <- read_csv('data/02-hw-hayman/hayman_ndvi.csv')%>% 
+ndvi <- read_csv('/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/02-hw-hayman/hayman_ndvi.csv')%>% 
   rename(burned=2,unburned=3) %>%
   mutate(data='ndvi')
 
@@ -72,15 +72,9 @@ There is a strong, positive correlation between NDMI and NDVI.
 
 ## Average NDSI and NDVI Correlation
 
-2) What is the correlation between average NDSI (normalized
- snow index) for January - April and average NDVI for June-August?
-In other words, does the previous year's snow cover influence vegetation
- growth for the following summer?
- 
- 
 In order to find the correlation between the average NDSI and NDVI, we used the data points for NDSI only during January - April (snow season) and only data points for NDVI during June - August (vegetation growth season). We found that there is a low positive correlation of 0.180 between snow coverage and vegetation. This means that the previous year's snow cover has little effect on the vegetation growth for the following summer and that this correlation could be from other factors in the environment. Looking at the graph, you can see a difference in correlation between NDVI and NDSI burned and un-burned sites.
  
-```{r fireNDSINDVI warning=F, message=F}
+```{r fireNDSINDVI, warning=F, message=F}
 #variable ndsi months
 var.snow_months <- c(1,2,3,4)
 
@@ -117,7 +111,7 @@ ggplot(combined, aes(x=ndsi_avg, y=ndvi_avg, color=site)) +
 
 We then looked at the difference of snow effect from the previous correlation between pre- and post-burn and burned and unburned.
 
-```{r firesnoweffect warning=F, message=F}
+```{r firesnoweffect, warning=F, message=F}
 #snow effect pre-burn
 preburn <- c(1984:2001)
 

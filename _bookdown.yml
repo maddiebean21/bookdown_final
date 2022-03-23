@@ -11,7 +11,7 @@ always_allow_html: true
 rmd_files:
   - "index.Rmd"
   - "01-hw-poudre.Rmd"
-  - "2-hw-hayman-fire.Rmd"
+  - "02-hw-hayman-fire.Rmd"
 #  - "3-hw-snow.Rmd"
 #  - "4-1-hw-spatial.Rmd"
 # - "4-2-hw-WaterQuality.Rmd"
