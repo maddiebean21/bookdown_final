@@ -107,6 +107,7 @@ our_snow_reader <- function(file){
     select(Year,DOY,Sno_Height_M) %>%
     mutate(site = name)
 }
+
 #creating an object with the functions
 snow_data_full <- map_dfr(snow_files,our_snow_reader)
 
@@ -149,7 +150,7 @@ links_hw
 
 Next, I used the `download_file` and `str_split_fixed` commands, along with a for loop, to download the data and saved it in our data folder.
 
-```{r snowdownloader}
+```{r, snowdownloader}
 
 # grab only the name of the file by splitting out on forward slashes
 splits_hw <- str_split_fixed(links_hw, '/', 8)
@@ -198,7 +199,7 @@ q3_reader <- function(file){
 
 ## Summary of meteorlogical files
 
- I used the `map` function to read in both meteorological files and then displayed a summary of my tibble.
+I used the `map` function to read in both meteorological files and then displayed a summary of my tibble.
 
 ```{r snowmapfunctions}
 
@@ -225,6 +226,7 @@ ggplot(q5_yearly) +
   ggthemes::theme_few() + 
   ggthemes::scale_color_few()
 ```
+
 What is suspicious about this data is temperature variation at the beginning of the graph, especially since the temperature is in Kelvin. This eludes that temperature was most likely not collected in the earlier years.
 
 ## Monthy average temperature plot

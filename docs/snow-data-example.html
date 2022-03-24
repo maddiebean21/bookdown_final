@@ -317,8 +317,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-6"><a href="snow-data-example.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year,DOY,Sno_Height_M) <span class="sc">%&gt;%</span></span>
 <span id="cb14-7"><a href="snow-data-example.html#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site =</span> name)</span>
 <span id="cb14-8"><a href="snow-data-example.html#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-9"><a href="snow-data-example.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object with the functions</span></span>
-<span id="cb14-10"><a href="snow-data-example.html#cb14-10" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(snow_files,our_snow_reader)</span></code></pre></div>
+<span id="cb14-9"><a href="snow-data-example.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="snow-data-example.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object with the functions</span></span>
+<span id="cb14-11"><a href="snow-data-example.html#cb14-11" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(snow_files,our_snow_reader)</span></code></pre></div>
 <pre><code>## Rows: 6211 Columns: 52</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -486,8 +487,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb39-3"><a href="snow-data-example.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_temp_k,<span class="at">color=</span>site)) <span class="sc">+</span> </span>
 <span id="cb39-4"><a href="snow-data-example.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_few</span>() <span class="sc">+</span> </span>
 <span id="cb39-5"><a href="snow-data-example.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_few</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/snowlineplot-1.png" width="672" />
-What is suspicious about this data is temperature variation at the beginning of the graph, especially since the temperature is in Kelvin. This eludes that temperature was most likely not collected in the earlier years.</p>
+<p><img src="bookdownproj_files/figure-html/snowlineplot-1.png" width="672" /></p>
+<p>What is suspicious about this data is temperature variation at the beginning of the graph, especially since the temperature is in Kelvin. This eludes that temperature was most likely not collected in the earlier years.</p>
 </div>
 <div id="monthy-average-temperature-plot" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Monthy average temperature plot<a href="snow-data-example.html#monthy-average-temperature-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
