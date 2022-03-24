@@ -201,7 +201,7 @@ q3_reader <- function(file){
 
 I used the `map` function to read in both meteorological files and then displayed a summary of my tibble.
 
-```{r, snowmapfunctions}
+```{r snowmetfiles}
 
 #reading in the forcing data 
 forcing_data_full <- map_dfr(file_names_hw, q3_reader)
