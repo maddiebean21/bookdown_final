@@ -12,7 +12,7 @@ rmd_files:
   - "index.Rmd"
   - "01-hw-poudre.Rmd"
   - "02-hw-hayman-fire.Rmd"
-#  - "3-hw-snow.Rmd"
+  - "03-hw-snow-functions.Rmd"
 #  - "4-1-hw-spatial.Rmd"
 # - "4-2-hw-WaterQuality.Rmd"
 #  - "5-corn.Rmd"
