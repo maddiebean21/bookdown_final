@@ -1,5 +1,5 @@
 
-```{r setup, include=FALSE}
+```{r foursetup, include=FALSE}
 library(tidyverse) # Tidy packages
 library(sf) #Spatial package that can read and create shapefiles 
 library(mapview) #Interactive maps
@@ -9,7 +9,7 @@ library(USAboundaries) #USA states and counties
 ```
 
 
-# LAGOS Analysis
+# LAGOS Analysis part 1
 
 
 ## Loading in data
@@ -17,7 +17,7 @@ library(USAboundaries) #USA states and counties
 
 ### First download and then specifically grab the locus (or site lat longs)
 
-```{r data-read}
+```{r fourdata-read}
 # #Lagos download script
 LAGOSNE::lagosne_get(dest_folder = LAGOSNE:::lagos_path())
 
@@ -35,7 +35,7 @@ lake_centers <- lagos$locus
 
 
 ### Convert to spatial data
-```{r}
+```{r fourspatial}
 #Look at the column names
 #names(lake_centers)
 
@@ -63,7 +63,7 @@ mapview(subset_spatial)
 
 ### Subset to only Minnesota
 
-```{r}
+```{r foursubset}
 states <- us_states()
 
 #Plot all the states to check if they loaded
@@ -85,7 +85,7 @@ minnesota_lakes %>%
 
 ## Map outline of Iowa and Illinois (similar to Minnesota map upstream)
 
-```{r}
+```{r fourmap}
 #creating Iowa map
 iowa <- states %>%
   filter(name == 'Iowa')%>%
@@ -109,7 +109,7 @@ mapview code chunk is from https://r-spatial.github.io/mapview/articles/articles
 
 ## Subsetting LAGOS data to these sites
 
-```{r}
+```{r foursites}
 #Subset iowa and illinois lakes based on spatial position 
 il_ia_lakes <- spatial_lakes[il_ia,]
 
@@ -122,7 +122,7 @@ Combined, there are 16,466 lakes in Illinois and Iowa. Minnesota alone, has 29,0
 Here I made a histogram plot with lake size on x-axis and frequency on 
 y axis.
 
-```{r}
+```{r fourhistogram}
 #making iowa lakes 
 iowa_lakes <- spatial_lakes[iowa,]
 
@@ -150,7 +150,7 @@ https://stackoverflow.com/questions/47596357/overlaying-two-ggplot-facet-wrap-hi
 
 ## Interactive plot of lakes in Iowa and Illinois, colored them by lake area in hectares
 
-```{r}
+```{r fourinteractive}
 #plotting iowa and illinois together
 il_ia_lakes %>%
   arrange(-lake_area_ha) %>%

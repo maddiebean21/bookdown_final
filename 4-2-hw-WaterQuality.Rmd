@@ -1,5 +1,5 @@
 
-```{r setup, include=FALSE}
+```{r lagossetup, include=FALSE}
 library(tidyverse) # Tidy packages
 library(sf) #Spatial package that can read and create shapefiles 
 library(mapview) #Interactive maps
@@ -41,7 +41,7 @@ nutr <- lagos$epi_nutr
 ### Subset columns nutr to only keep key info that I wanted
 
 
-```{r}
+```{r lagossubset}
 clarity_only <- nutr %>%
   select(lagoslakeid,sampledate,chla,doc,secchi) %>%
   mutate(sampledate = as.character(sampledate) %>% ymd(.))
@@ -51,7 +51,7 @@ clarity_only <- nutr %>%
 
 ### Keep sites with at least 200 observations 
 
-```{r}
+```{r lagosobs}
 
 #Look at the number of rows of dataset
 #nrow(clarity_only)
@@ -76,7 +76,7 @@ chla_secchi_200 <- chla_secchi %>%
 
 ### Join water quality data to spatial data
 
-```{r}
+```{r lagosjoin}
 spatial_200 <- inner_join(spatial_lakes,chla_secchi_200 %>%
                             distinct(lagoslakeid,.keep_all=T),
                           by='lagoslakeid')
@@ -86,7 +86,7 @@ spatial_200 <- inner_join(spatial_lakes,chla_secchi_200 %>%
 
 ### Mean Chl_a map
 
-```{r}
+```{r lagosmean}
 ### Take the mean chl_a and secchi by lake
 
 mean_values_200 <- chla_secchi_200 %>%
@@ -114,7 +114,7 @@ mapview(mean_spatial,zcol='log10_mean_chl')
 
 - Here, I plotted chla vs secchi for all sites 
 
-```{r}
+```{r lagosplot}
 #plotting chla vs secchi for sites with at least 200 observations
 ggplot(chla_secchi_200, aes(x=chla, y = secchi)) +
   geom_point(color = "darkblue")+
@@ -134,7 +134,7 @@ The correlation of the Secchi Disk Depth and Chlorophyll A is -0.3774. This low 
 ###  First I made a lagos spatial dataset that has the total number of counts per site.
 
 code for question 2 was from Amanda Hastings on the code help - had a lot of trouble and got frustrated, which led me to cave and use Amanda's code
-```{r}
+```{r lagosdata}
 #creating counts object with the lagos spatial data set
 site_counts <- lake_centers %>%
   group_by(lagoslakeid) %>%
@@ -146,7 +146,7 @@ site_counts <- lake_centers %>%
 
 ### Second, I joined this point dataset to the us_boundaries data. 
 
-```{r}
+```{r lagosboundaries}
 #joining the states with the lagos counts
 states_lagos <- lagos$state %>%
   select(-state_pct_in_nwi, -state_ha_in_nwi,-state_ha)
@@ -159,7 +159,7 @@ stateid_counts <- inner_join(site_counts, states_lagos, by="state_zoneid")
 
 ### Then I grouped by state and sum all the observations in that state and arrange that data from most to least total observations per state. 
 
-```{r}
+```{r lagosgroup}
 #grouping by state and summarizing counts in each state
 state_sums <- stateid_counts %>%
   group_by(state_name) %>%
@@ -179,7 +179,7 @@ The state that has the largest amount of data is Minnesota with 29,022. The stat
 
 ## Spatial pattern in Secchi disk depth for lakes with at least 200 observations
 
-```{r}
+```{r lagosspatial}
 #mapping the secchi disk depth for lakes with at least 200 using the spatial 200 table
 spatial_200 %>%
   arrange(-secchi)%>%
