@@ -2,7 +2,7 @@
 
 In this assignment, I explored web scraping, different functions and iterations by using a data set from the Center for Snow and Avalanche Studies  [Website](https://snowstudies.org/archived-data/) and read a table in. This table contains links to data I want and to programatically download for three sites. I don't know much about these sites, but they contain incredibly rich snow, temperature, and precip data. 
 
-```{r setup, include=FALSE}
+```{r snowsetup, include=FALSE}
 library(rvest)
 library(tidyverse)
 library(lubridate)
@@ -49,7 +49,7 @@ splits <- str_split_fixed(links,'/',8)
 dataset <- splits[,8] 
 
 #generate a file list for where the data goes
-file_names <- paste0('data',dataset)
+file_names <- paste0('/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SASP_24hr.csv',dataset)
 
 for(i in 1:3){
   download.file(links[i],destfile=file_names[i])
@@ -70,6 +70,7 @@ evaluate <- !all(downloaded)
 if(evaluate == T){
   map2(links[1:3],file_names[1:3],download.file)
 }else{print('data already downloaded')}
+
 
 ```
 
@@ -158,7 +159,7 @@ splits_hw <- str_split_fixed(links_hw, '/', 8)
 forcingdataset <- splits_hw[,8] %>% 
   gsub('.txt','',.)
 
-file_names_hw <- paste0('data/', forcingdataset)
+file_names_hw <- paste0('/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SBB_SASP_Forcing_Data', forcingdataset)
 
 # creating a for loop
 for(i in 1:length(file_names_hw)){

@@ -23,7 +23,7 @@
 <meta name="author" content="Madeline Bean" />
 
 
-<meta name="date" content="2022-03-24" />
+<meta name="date" content="2022-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="hayman-fire-recovery.html"/>
-
+<link rel="next" href="lagos-analysis-part-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,29 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.0/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.0/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -183,6 +206,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="snow-data-example.html"><a href="snow-data-example.html#monthy-average-temperature-plot"><i class="fa fa-check"></i><b>2.8</b> Monthy average temperature plot<span></span></a></li>
 <li class="chapter" data-level="2.9" data-path="snow-data-example.html"><a href="snow-data-example.html#average-daily-precipitation"><i class="fa fa-check"></i><b>2.9</b> Average daily precipitation<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html"><i class="fa fa-check"></i><b>3</b> LAGOS Analysis part 1<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#loading-in-data"><i class="fa fa-check"></i><b>3.1</b> Loading in data<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#first-download-and-then-specifically-grab-the-locus-or-site-lat-longs"><i class="fa fa-check"></i><b>3.1.1</b> First download and then specifically grab the locus (or site lat longs)<span></span></a></li>
+<li class="chapter" data-level="3.1.2" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#convert-to-spatial-data"><i class="fa fa-check"></i><b>3.1.2</b> Convert to spatial data<span></span></a></li>
+<li class="chapter" data-level="3.1.3" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#subset-to-only-minnesota"><i class="fa fa-check"></i><b>3.1.3</b> Subset to only Minnesota<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#map-outline-of-iowa-and-illinois-similar-to-minnesota-map-upstream"><i class="fa fa-check"></i><b>3.2</b> Map outline of Iowa and Illinois (similar to Minnesota map upstream)<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#subsetting-lagos-data-to-these-sites"><i class="fa fa-check"></i><b>3.3</b> Subsetting LAGOS data to these sites<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#distribution-of-lake-size-in-iowa-vs.-minnesota"><i class="fa fa-check"></i><b>3.4</b> Distribution of lake size in Iowa vs. Minnesota<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#interactive-plot-of-lakes-in-iowa-and-illinois-colored-them-by-lake-area-in-hectares"><i class="fa fa-check"></i><b>3.5</b> Interactive plot of lakes in Iowa and Illinois, colored them by lake area in hectares<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#other-data-sources-that-i-might-use-to-understand-how-reservoirs-and-natural-lakes-vary-in-size-in-these-three-states"><i class="fa fa-check"></i><b>3.6</b> Other data sources that I might use to understand how reservoirs and natural lakes vary in size in these three states?<span></span></a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -210,52 +247,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.1</span> Reading an html<a href="snow-data-example.html#reading-an-html" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="extract-csv-links-from-webpage" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Extract CSV links from webpage<a href="snow-data-example.html#extract-csv-links-from-webpage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="snow-data-example.html#cb1-1" aria-hidden="true" tabindex="-1"></a>site_url <span class="ot">&lt;-</span> <span class="st">&#39;https://snowstudies.org/archived-data/&#39;</span></span>
-<span id="cb1-2"><a href="snow-data-example.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="snow-data-example.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Read the web url</span></span>
-<span id="cb1-4"><a href="snow-data-example.html#cb1-4" aria-hidden="true" tabindex="-1"></a>webpage <span class="ot">&lt;-</span> <span class="fu">read_html</span>(site_url)</span>
-<span id="cb1-5"><a href="snow-data-example.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="snow-data-example.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#See if we can extract tables and get the data that way</span></span>
-<span id="cb1-7"><a href="snow-data-example.html#cb1-7" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="snow-data-example.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;table&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="snow-data-example.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  magrittr<span class="sc">::</span><span class="fu">extract2</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="snow-data-example.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-11"><a href="snow-data-example.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#That didn&#39;t work, so let&#39;s try a different approach</span></span>
-<span id="cb1-12"><a href="snow-data-example.html#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="snow-data-example.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract only weblinks and then the URLs!</span></span>
-<span id="cb1-14"><a href="snow-data-example.html#cb1-14" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
-<span id="cb1-15"><a href="snow-data-example.html#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;a&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-16"><a href="snow-data-example.html#cb1-16" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">grepl</span>(<span class="st">&#39;24hr&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="snow-data-example.html#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&#39;href&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="snow-data-example.html#cb22-1" aria-hidden="true" tabindex="-1"></a>site_url <span class="ot">&lt;-</span> <span class="st">&#39;https://snowstudies.org/archived-data/&#39;</span></span>
+<span id="cb22-2"><a href="snow-data-example.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="snow-data-example.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Read the web url</span></span>
+<span id="cb22-4"><a href="snow-data-example.html#cb22-4" aria-hidden="true" tabindex="-1"></a>webpage <span class="ot">&lt;-</span> <span class="fu">read_html</span>(site_url)</span>
+<span id="cb22-5"><a href="snow-data-example.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="snow-data-example.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#See if we can extract tables and get the data that way</span></span>
+<span id="cb22-7"><a href="snow-data-example.html#cb22-7" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="snow-data-example.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;table&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="snow-data-example.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  magrittr<span class="sc">::</span><span class="fu">extract2</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-10"><a href="snow-data-example.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-11"><a href="snow-data-example.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#That didn&#39;t work, so let&#39;s try a different approach</span></span>
+<span id="cb22-12"><a href="snow-data-example.html#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="snow-data-example.html#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Extract only weblinks and then the URLs!</span></span>
+<span id="cb22-14"><a href="snow-data-example.html#cb22-14" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
+<span id="cb22-15"><a href="snow-data-example.html#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;a&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-16"><a href="snow-data-example.html#cb22-16" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">grepl</span>(<span class="st">&#39;24hr&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
+<span id="cb22-17"><a href="snow-data-example.html#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&#39;href&#39;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="data-download-1" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Data Download<a href="snow-data-example.html#data-download-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="download-data-in-a-for-loop" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Download data in a for loop<a href="snow-data-example.html#download-data-in-a-for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="snow-data-example.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Grab only the name of the file by splitting out on forward slashes</span></span>
-<span id="cb2-2"><a href="snow-data-example.html#cb2-2" aria-hidden="true" tabindex="-1"></a>splits <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(links,<span class="st">&#39;/&#39;</span>,<span class="dv">8</span>)</span>
-<span id="cb2-3"><a href="snow-data-example.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="snow-data-example.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Keep only the 8th column</span></span>
-<span id="cb2-5"><a href="snow-data-example.html#cb2-5" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> splits[,<span class="dv">8</span>] </span>
-<span id="cb2-6"><a href="snow-data-example.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="snow-data-example.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a file list for where the data goes</span></span>
-<span id="cb2-8"><a href="snow-data-example.html#cb2-8" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;data&#39;</span>,dataset)</span>
-<span id="cb2-9"><a href="snow-data-example.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="snow-data-example.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
-<span id="cb2-11"><a href="snow-data-example.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(links[i],<span class="at">destfile=</span>file_names[i])</span>
-<span id="cb2-12"><a href="snow-data-example.html#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-13"><a href="snow-data-example.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="snow-data-example.html#cb2-14" aria-hidden="true" tabindex="-1"></a>downloaded <span class="ot">&lt;-</span> <span class="fu">file.exists</span>(file_names)</span>
-<span id="cb2-15"><a href="snow-data-example.html#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="snow-data-example.html#cb2-16" aria-hidden="true" tabindex="-1"></a>evaluate <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">all</span>(downloaded)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="snow-data-example.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Grab only the name of the file by splitting out on forward slashes</span></span>
+<span id="cb23-2"><a href="snow-data-example.html#cb23-2" aria-hidden="true" tabindex="-1"></a>splits <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(links,<span class="st">&#39;/&#39;</span>,<span class="dv">8</span>)</span>
+<span id="cb23-3"><a href="snow-data-example.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="snow-data-example.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Keep only the 8th column</span></span>
+<span id="cb23-5"><a href="snow-data-example.html#cb23-5" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> splits[,<span class="dv">8</span>] </span>
+<span id="cb23-6"><a href="snow-data-example.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="snow-data-example.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#generate a file list for where the data goes</span></span>
+<span id="cb23-8"><a href="snow-data-example.html#cb23-8" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SASP_24hr.csv&#39;</span>,dataset)</span>
+<span id="cb23-9"><a href="snow-data-example.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="snow-data-example.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb23-11"><a href="snow-data-example.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(links[i],<span class="at">destfile=</span>file_names[i])</span>
+<span id="cb23-12"><a href="snow-data-example.html#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-13"><a href="snow-data-example.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="snow-data-example.html#cb23-14" aria-hidden="true" tabindex="-1"></a>downloaded <span class="ot">&lt;-</span> <span class="fu">file.exists</span>(file_names)</span>
+<span id="cb23-15"><a href="snow-data-example.html#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="snow-data-example.html#cb23-16" aria-hidden="true" tabindex="-1"></a>evaluate <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">all</span>(downloaded)</span></code></pre></div>
 </div>
 <div id="download-data-in-a-map" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Download data in a map<a href="snow-data-example.html#download-data-in-a-map" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="snow-data-example.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Map version of the same for loop (downloading 3 files)</span></span>
-<span id="cb3-2"><a href="snow-data-example.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(evaluate <span class="sc">==</span> T){</span>
-<span id="cb3-3"><a href="snow-data-example.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map2</span>(links[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],file_names[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],download.file)</span>
-<span id="cb3-4"><a href="snow-data-example.html#cb3-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{<span class="fu">print</span>(<span class="st">&#39;data already downloaded&#39;</span>)}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="snow-data-example.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Map version of the same for loop (downloading 3 files)</span></span>
+<span id="cb24-2"><a href="snow-data-example.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(evaluate <span class="sc">==</span> T){</span>
+<span id="cb24-3"><a href="snow-data-example.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map2</span>(links[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],file_names[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],download.file)</span>
+<span id="cb24-4"><a href="snow-data-example.html#cb24-4" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{<span class="fu">print</span>(<span class="st">&#39;data already downloaded&#39;</span>)}</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 0
 ## 
@@ -270,17 +307,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.3</span> Data read-in<a href="snow-data-example.html#data-read-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="read-in-just-the-snow-data-as-a-loop" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Read in just the snow data as a loop<a href="snow-data-example.html#read-in-just-the-snow-data-as-a-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="snow-data-example.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pattern matching to only keep certain files</span></span>
-<span id="cb5-2"><a href="snow-data-example.html#cb5-2" aria-hidden="true" tabindex="-1"></a>snow_files <span class="ot">&lt;-</span> file_names <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="snow-data-example.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&#39;SG_24&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="snow-data-example.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&#39;PTSP&#39;</span>,.)]</span>
-<span id="cb5-5"><a href="snow-data-example.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="snow-data-example.html#cb5-6" aria-hidden="true" tabindex="-1"></a>empty_data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb5-7"><a href="snow-data-example.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="snow-data-example.html#cb5-8" aria-hidden="true" tabindex="-1"></a>snow_data <span class="ot">&lt;-</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(snow_files)){</span>
-<span id="cb5-9"><a href="snow-data-example.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  empty_data[[i]] <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(snow_files[i]) <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="snow-data-example.html#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year,DOY,Sno_Height_M)</span>
-<span id="cb5-11"><a href="snow-data-example.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="snow-data-example.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pattern matching to only keep certain files</span></span>
+<span id="cb26-2"><a href="snow-data-example.html#cb26-2" aria-hidden="true" tabindex="-1"></a>snow_files <span class="ot">&lt;-</span> file_names <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="snow-data-example.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&#39;SG_24&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="snow-data-example.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  .[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&#39;PTSP&#39;</span>,.)]</span>
+<span id="cb26-5"><a href="snow-data-example.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="snow-data-example.html#cb26-6" aria-hidden="true" tabindex="-1"></a>empty_data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb26-7"><a href="snow-data-example.html#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="snow-data-example.html#cb26-8" aria-hidden="true" tabindex="-1"></a>snow_data <span class="ot">&lt;-</span> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(snow_files)){</span>
+<span id="cb26-9"><a href="snow-data-example.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  empty_data[[i]] <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(snow_files[i]) <span class="sc">%&gt;%</span></span>
+<span id="cb26-10"><a href="snow-data-example.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year,DOY,Sno_Height_M)</span>
+<span id="cb26-11"><a href="snow-data-example.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <pre><code>## Rows: 6211 Columns: 52</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -295,9 +332,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="snow-data-example.html#cb12-1" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">do.call</span>(<span class="st">&#39;rbind&#39;</span>,empty_data)</span>
-<span id="cb12-2"><a href="snow-data-example.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="snow-data-example.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snow_data_full)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="snow-data-example.html#cb33-1" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">do.call</span>(<span class="st">&#39;rbind&#39;</span>,empty_data)</span>
+<span id="cb33-2"><a href="snow-data-example.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="snow-data-example.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snow_data_full)</span></code></pre></div>
 <pre><code>##       Year           DOY         Sno_Height_M   
 ##  Min.   :2003   Min.   :  1.0   Min.   :-3.523  
 ##  1st Qu.:2008   1st Qu.: 92.0   1st Qu.: 0.350  
@@ -309,17 +346,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="read-in-the-data-as-a-map-function" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Read in the data as a map function<a href="snow-data-example.html#read-in-the-data-as-a-map-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="snow-data-example.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making the data as a map function</span></span>
-<span id="cb14-2"><a href="snow-data-example.html#cb14-2" aria-hidden="true" tabindex="-1"></a>our_snow_reader <span class="ot">&lt;-</span> <span class="cf">function</span>(file){</span>
-<span id="cb14-3"><a href="snow-data-example.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file,<span class="st">&#39;/&#39;</span>,<span class="dv">2</span>)[,<span class="dv">2</span>] <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="snow-data-example.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gsub</span>(<span class="st">&#39;_24hr.csv&#39;</span>,<span class="st">&#39;&#39;</span>,.)</span>
-<span id="cb14-5"><a href="snow-data-example.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file) <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="snow-data-example.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year,DOY,Sno_Height_M) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="snow-data-example.html#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site =</span> name)</span>
-<span id="cb14-8"><a href="snow-data-example.html#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-9"><a href="snow-data-example.html#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="snow-data-example.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object with the functions</span></span>
-<span id="cb14-11"><a href="snow-data-example.html#cb14-11" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(snow_files,our_snow_reader)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="snow-data-example.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making the data as a map function</span></span>
+<span id="cb35-2"><a href="snow-data-example.html#cb35-2" aria-hidden="true" tabindex="-1"></a>our_snow_reader <span class="ot">&lt;-</span> <span class="cf">function</span>(file){</span>
+<span id="cb35-3"><a href="snow-data-example.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file,<span class="st">&#39;/&#39;</span>,<span class="dv">2</span>)[,<span class="dv">2</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="snow-data-example.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gsub</span>(<span class="st">&#39;_24hr.csv&#39;</span>,<span class="st">&#39;&#39;</span>,.)</span>
+<span id="cb35-5"><a href="snow-data-example.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file) <span class="sc">%&gt;%</span></span>
+<span id="cb35-6"><a href="snow-data-example.html#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Year,DOY,Sno_Height_M) <span class="sc">%&gt;%</span></span>
+<span id="cb35-7"><a href="snow-data-example.html#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">site =</span> name)</span>
+<span id="cb35-8"><a href="snow-data-example.html#cb35-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-9"><a href="snow-data-example.html#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="snow-data-example.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object with the functions</span></span>
+<span id="cb35-11"><a href="snow-data-example.html#cb35-11" aria-hidden="true" tabindex="-1"></a>snow_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(snow_files,our_snow_reader)</span></code></pre></div>
 <pre><code>## Rows: 6211 Columns: 52</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -334,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="snow-data-example.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snow_data_full)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="snow-data-example.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(snow_data_full)</span></code></pre></div>
 <pre><code>##       Year           DOY         Sno_Height_M        site          
 ##  Min.   :2003   Min.   :  1.0   Min.   :-3.523   Length:12786      
 ##  1st Qu.:2008   1st Qu.: 92.0   1st Qu.: 0.350   Class :character  
@@ -346,65 +383,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="plot-snow-data" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Plot snow data<a href="snow-data-example.html#plot-snow-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="snow-data-example.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making an object for the yearly snow data points</span></span>
-<span id="cb23-2"><a href="snow-data-example.html#cb23-2" aria-hidden="true" tabindex="-1"></a>snow_yearly <span class="ot">&lt;-</span> snow_data_full <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="snow-data-example.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year,site) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="snow-data-example.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(Sno_Height_M,<span class="at">na.rm=</span>T))</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="snow-data-example.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#making an object for the yearly snow data points</span></span>
+<span id="cb44-2"><a href="snow-data-example.html#cb44-2" aria-hidden="true" tabindex="-1"></a>snow_yearly <span class="ot">&lt;-</span> snow_data_full <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="snow-data-example.html#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year,site) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="snow-data-example.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_height =</span> <span class="fu">mean</span>(Sno_Height_M,<span class="at">na.rm=</span>T))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;Year&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="snow-data-example.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the yearly snow data</span></span>
-<span id="cb25-2"><a href="snow-data-example.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(snow_yearly,<span class="fu">aes</span>(<span class="at">x=</span>Year,<span class="at">y=</span>mean_height,<span class="at">color=</span>site)) <span class="sc">+</span> </span>
-<span id="cb25-3"><a href="snow-data-example.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb25-4"><a href="snow-data-example.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_few</span>() <span class="sc">+</span> </span>
-<span id="cb25-5"><a href="snow-data-example.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_few</span>()<span class="sc">+</span></span>
-<span id="cb25-6"><a href="snow-data-example.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Mean Height&quot;</span>, <span class="at">y=</span><span class="st">&quot;Year&quot;</span>, <span class="at">title=</span><span class="st">&quot;Yearly Snow Data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="snow-data-example.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the yearly snow data</span></span>
+<span id="cb46-2"><a href="snow-data-example.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(snow_yearly,<span class="fu">aes</span>(<span class="at">x=</span>Year,<span class="at">y=</span>mean_height,<span class="at">color=</span>site)) <span class="sc">+</span> </span>
+<span id="cb46-3"><a href="snow-data-example.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb46-4"><a href="snow-data-example.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_few</span>() <span class="sc">+</span> </span>
+<span id="cb46-5"><a href="snow-data-example.html#cb46-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_few</span>()<span class="sc">+</span></span>
+<span id="cb46-6"><a href="snow-data-example.html#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Mean Height&quot;</span>, <span class="at">y=</span><span class="st">&quot;Year&quot;</span>, <span class="at">title=</span><span class="st">&quot;Yearly Snow Data&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
 <p><img src="bookdownproj_files/figure-html/snowplotting-1.png" width="672" /></p>
 </div>
 </div>
 <div id="extracting-the-meteorological-data-urls" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Extracting the meteorological data URLs<a href="snow-data-example.html#extracting-the-meteorological-data-urls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I used the <code>rvest</code> package to get the URLs for the <code>SASP forcing</code> and <code>SBSP_forcing</code> meteorological datasets.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="snow-data-example.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating values for the meteorological data URLs</span></span>
-<span id="cb26-2"><a href="snow-data-example.html#cb26-2" aria-hidden="true" tabindex="-1"></a>links_hw <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="snow-data-example.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;a&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="snow-data-example.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">grepl</span>(<span class="st">&#39;forcing&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="snow-data-example.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&#39;href&#39;</span>)</span>
-<span id="cb26-6"><a href="snow-data-example.html#cb26-6" aria-hidden="true" tabindex="-1"></a>links_hw</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="snow-data-example.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating values for the meteorological data URLs</span></span>
+<span id="cb48-2"><a href="snow-data-example.html#cb48-2" aria-hidden="true" tabindex="-1"></a>links_hw <span class="ot">&lt;-</span> webpage <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="snow-data-example.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&#39;a&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="snow-data-example.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">grepl</span>(<span class="st">&#39;forcing&#39;</span>,.)] <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="snow-data-example.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">&#39;href&#39;</span>)</span>
+<span id="cb48-6"><a href="snow-data-example.html#cb48-6" aria-hidden="true" tabindex="-1"></a>links_hw</span></code></pre></div>
 <pre><code>## [1] &quot;https://snowstudies.org/wp-content/uploads/2022/02/SBB_SASP_Forcing_Data.txt&quot;
 ## [2] &quot;https://snowstudies.org/wp-content/uploads/2022/02/SBB_SBSP_Forcing_Data.txt&quot;</code></pre>
 </div>
 <div id="download-the-meteorological-data." class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Download the meteorological data.<a href="snow-data-example.html#download-the-meteorological-data." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Next, I used the <code>download_file</code> and <code>str_split_fixed</code> commands, along with a for loop, to download the data and saved it in our data folder.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="snow-data-example.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab only the name of the file by splitting out on forward slashes</span></span>
-<span id="cb28-2"><a href="snow-data-example.html#cb28-2" aria-hidden="true" tabindex="-1"></a>splits_hw <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(links_hw, <span class="st">&#39;/&#39;</span>, <span class="dv">8</span>)</span>
-<span id="cb28-3"><a href="snow-data-example.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="snow-data-example.html#cb28-4" aria-hidden="true" tabindex="-1"></a>forcingdataset <span class="ot">&lt;-</span> splits_hw[,<span class="dv">8</span>] <span class="sc">%&gt;%</span> </span>
-<span id="cb28-5"><a href="snow-data-example.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&#39;.txt&#39;</span>,<span class="st">&#39;&#39;</span>,.)</span>
-<span id="cb28-6"><a href="snow-data-example.html#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="snow-data-example.html#cb28-7" aria-hidden="true" tabindex="-1"></a>file_names_hw <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;data/&#39;</span>, forcingdataset)</span>
-<span id="cb28-8"><a href="snow-data-example.html#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="snow-data-example.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a for loop</span></span>
-<span id="cb28-10"><a href="snow-data-example.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(file_names_hw)){</span>
-<span id="cb28-11"><a href="snow-data-example.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(links_hw[i], <span class="at">destfile=</span>file_names_hw[i])</span>
-<span id="cb28-12"><a href="snow-data-example.html#cb28-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-13"><a href="snow-data-example.html#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-14"><a href="snow-data-example.html#cb28-14" aria-hidden="true" tabindex="-1"></a>file_names_hw</span></code></pre></div>
-<pre><code>## [1] &quot;data/SBB_SASP_Forcing_Data&quot; &quot;data/SBB_SBSP_Forcing_Data&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="snow-data-example.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grab only the name of the file by splitting out on forward slashes</span></span>
+<span id="cb50-2"><a href="snow-data-example.html#cb50-2" aria-hidden="true" tabindex="-1"></a>splits_hw <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(links_hw, <span class="st">&#39;/&#39;</span>, <span class="dv">8</span>)</span>
+<span id="cb50-3"><a href="snow-data-example.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="snow-data-example.html#cb50-4" aria-hidden="true" tabindex="-1"></a>forcingdataset <span class="ot">&lt;-</span> splits_hw[,<span class="dv">8</span>] <span class="sc">%&gt;%</span> </span>
+<span id="cb50-5"><a href="snow-data-example.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">&#39;.txt&#39;</span>,<span class="st">&#39;&#39;</span>,.)</span>
+<span id="cb50-6"><a href="snow-data-example.html#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="snow-data-example.html#cb50-7" aria-hidden="true" tabindex="-1"></a>file_names_hw <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SBB_SASP_Forcing_Data&#39;</span>, forcingdataset)</span>
+<span id="cb50-8"><a href="snow-data-example.html#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="snow-data-example.html#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a for loop</span></span>
+<span id="cb50-10"><a href="snow-data-example.html#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(file_names_hw)){</span>
+<span id="cb50-11"><a href="snow-data-example.html#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(links_hw[i], <span class="at">destfile=</span>file_names_hw[i])</span>
+<span id="cb50-12"><a href="snow-data-example.html#cb50-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-13"><a href="snow-data-example.html#cb50-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="snow-data-example.html#cb50-14" aria-hidden="true" tabindex="-1"></a>file_names_hw</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SBB_SASP_Forcing_DataSBB_SASP_Forcing_Data&quot;
+## [2] &quot;/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/03-hw-snow/SBB_SASP_Forcing_DataSBB_SBSP_Forcing_Data&quot;</code></pre>
 </div>
 <div id="custom-function-writing" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Custom function writing<a href="snow-data-example.html#custom-function-writing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I wrote a custom function in order to read in the data and append a site column to the data.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="snow-data-example.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this code grabs the variable names from the metadata pdf file</span></span>
-<span id="cb30-2"><a href="snow-data-example.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="snow-data-example.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this code grabs the variable names from the metadata pdf file</span></span>
+<span id="cb52-2"><a href="snow-data-example.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span></code></pre></div>
 <pre><code>## Using poppler version 20.12.1</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="snow-data-example.html#cb32-1" aria-hidden="true" tabindex="-1"></a>q3_headers <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="st">&#39;https://snowstudies.org/wp-content/uploads/2022/02/Serially-Complete-Metadata-text08.pdf&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="snow-data-example.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_lines</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="snow-data-example.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">trimws</span>(.) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="snow-data-example.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split_fixed</span>(.,<span class="st">&#39;</span><span class="sc">\\</span><span class="st">.&#39;</span>,<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-5"><a href="snow-data-example.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  .[,<span class="dv">2</span>] <span class="sc">%&gt;%</span></span>
-<span id="cb32-6"><a href="snow-data-example.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>] <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a href="snow-data-example.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>(<span class="at">side =</span> <span class="st">&quot;left&quot;</span>)</span>
-<span id="cb32-8"><a href="snow-data-example.html#cb32-8" aria-hidden="true" tabindex="-1"></a>q3_headers</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="snow-data-example.html#cb54-1" aria-hidden="true" tabindex="-1"></a>q3_headers <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="st">&#39;https://snowstudies.org/wp-content/uploads/2022/02/Serially-Complete-Metadata-text08.pdf&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="snow-data-example.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_lines</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="snow-data-example.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">trimws</span>(.) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="snow-data-example.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split_fixed</span>(.,<span class="st">&#39;</span><span class="sc">\\</span><span class="st">.&#39;</span>,<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-5"><a href="snow-data-example.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  .[,<span class="dv">2</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb54-6"><a href="snow-data-example.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">26</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb54-7"><a href="snow-data-example.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>(<span class="at">side =</span> <span class="st">&quot;left&quot;</span>)</span>
+<span id="cb54-8"><a href="snow-data-example.html#cb54-8" aria-hidden="true" tabindex="-1"></a>q3_headers</span></code></pre></div>
 <pre><code>##  [1] &quot;year&quot;                                                       
 ##  [2] &quot;month&quot;                                                      
 ##  [3] &quot;day&quot;                                                        
@@ -431,22 +470,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [24] &quot;qc code air temp&quot;                                           
 ## [25] &quot;qc code wind speed&quot;                                         
 ## [26] &quot;qc code relhum&quot;</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="snow-data-example.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a function</span></span>
-<span id="cb34-2"><a href="snow-data-example.html#cb34-2" aria-hidden="true" tabindex="-1"></a>q3_reader <span class="ot">&lt;-</span> <span class="cf">function</span>(file){</span>
-<span id="cb34-3"><a href="snow-data-example.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file, <span class="st">&#39;/&#39;</span>, <span class="dv">2</span>)[,<span class="dv">2</span>] </span>
-<span id="cb34-4"><a href="snow-data-example.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  name2 <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file, <span class="st">&#39;_&#39;</span>, <span class="dv">4</span>)[,<span class="dv">2</span>]</span>
-<span id="cb34-5"><a href="snow-data-example.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  q3test <span class="ot">=</span> <span class="fu">read.delim</span>(file, <span class="at">header =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span><span class="st">&quot;&quot;</span>, <span class="at">col.names =</span> q3_headers, <span class="at">skip =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-6"><a href="snow-data-example.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">14</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-7"><a href="snow-data-example.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site=</span>name2)</span>
-<span id="cb34-8"><a href="snow-data-example.html#cb34-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="snow-data-example.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a function</span></span>
+<span id="cb56-2"><a href="snow-data-example.html#cb56-2" aria-hidden="true" tabindex="-1"></a>q3_reader <span class="ot">&lt;-</span> <span class="cf">function</span>(file){</span>
+<span id="cb56-3"><a href="snow-data-example.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file, <span class="st">&#39;/&#39;</span>, <span class="dv">2</span>)[,<span class="dv">2</span>] </span>
+<span id="cb56-4"><a href="snow-data-example.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  name2 <span class="ot">=</span> <span class="fu">str_split_fixed</span>(file, <span class="st">&#39;_&#39;</span>, <span class="dv">4</span>)[,<span class="dv">2</span>]</span>
+<span id="cb56-5"><a href="snow-data-example.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  q3test <span class="ot">=</span> <span class="fu">read.delim</span>(file, <span class="at">header =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span><span class="st">&quot;&quot;</span>, <span class="at">col.names =</span> q3_headers, <span class="at">skip =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-6"><a href="snow-data-example.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">14</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-7"><a href="snow-data-example.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">site=</span>name2)</span>
+<span id="cb56-8"><a href="snow-data-example.html#cb56-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="summary-of-meteorlogical-files" class="section level2 hasAnchor" number="2.7">
 <h2><span class="header-section-number">2.7</span> Summary of meteorlogical files<a href="snow-data-example.html#summary-of-meteorlogical-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I used the <code>map</code> function to read in both meteorological files and then displayed a summary of my tibble.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="snow-data-example.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in the forcing data </span></span>
-<span id="cb35-2"><a href="snow-data-example.html#cb35-2" aria-hidden="true" tabindex="-1"></a>forcing_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(file_names_hw, q3_reader)</span>
-<span id="cb35-3"><a href="snow-data-example.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="snow-data-example.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(forcing_data_full)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="snow-data-example.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in the forcing data </span></span>
+<span id="cb57-2"><a href="snow-data-example.html#cb57-2" aria-hidden="true" tabindex="-1"></a>forcing_data_full <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(file_names_hw, q3_reader)</span>
+<span id="cb57-3"><a href="snow-data-example.html#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="snow-data-example.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(forcing_data_full)</span></code></pre></div>
 <pre><code>##       year          month             day             hour           minute 
 ##  Min.   :2003   Min.   : 1.000   Min.   : 1.00   Min.   : 0.00   Min.   :0  
 ##  1st Qu.:2005   1st Qu.: 3.000   1st Qu.: 8.00   1st Qu.: 5.75   1st Qu.:0  
@@ -477,46 +516,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :0.014780</code></pre>
 <p>##Average yearly temperature</p>
 <p>I made a line plot of mean temp by year by site (using the <code>air temp [K]</code> variable). What is suspicious about this data is temperature variation at the beginning of the graph, especially since the temperature is in Kelvin. This eludes that temperature was most likely not collected in the earlier years.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="snow-data-example.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object to plot, grabbing the mean temperature by year by site</span></span>
-<span id="cb37-2"><a href="snow-data-example.html#cb37-2" aria-hidden="true" tabindex="-1"></a>q5_yearly <span class="ot">&lt;-</span> forcing_data_full <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="snow-data-example.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year,site) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="snow-data-example.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_temp_k =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T))</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="snow-data-example.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object to plot, grabbing the mean temperature by year by site</span></span>
+<span id="cb59-2"><a href="snow-data-example.html#cb59-2" aria-hidden="true" tabindex="-1"></a>q5_yearly <span class="ot">&lt;-</span> forcing_data_full <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="snow-data-example.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year,site) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="snow-data-example.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_temp_k =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="snow-data-example.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the mean temperature by year by site</span></span>
-<span id="cb39-2"><a href="snow-data-example.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(q5_yearly) <span class="sc">+</span> </span>
-<span id="cb39-3"><a href="snow-data-example.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_temp_k,<span class="at">color=</span>site)) <span class="sc">+</span> </span>
-<span id="cb39-4"><a href="snow-data-example.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_few</span>() <span class="sc">+</span> </span>
-<span id="cb39-5"><a href="snow-data-example.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_few</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="snow-data-example.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the mean temperature by year by site</span></span>
+<span id="cb61-2"><a href="snow-data-example.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(q5_yearly) <span class="sc">+</span> </span>
+<span id="cb61-3"><a href="snow-data-example.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_temp_k,<span class="at">color=</span>site)) <span class="sc">+</span> </span>
+<span id="cb61-4"><a href="snow-data-example.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_few</span>() <span class="sc">+</span> </span>
+<span id="cb61-5"><a href="snow-data-example.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_few</span>()</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/snowlineplot-1.png" width="672" /></p>
 <p>What is suspicious about this data is temperature variation at the beginning of the graph, especially since the temperature is in Kelvin. This eludes that temperature was most likely not collected in the earlier years.</p>
 </div>
 <div id="monthy-average-temperature-plot" class="section level2 hasAnchor" number="2.8">
 <h2><span class="header-section-number">2.8</span> Monthy average temperature plot<a href="snow-data-example.html#monthy-average-temperature-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here, i wrote a function in order to make line plots of monthly average temperature at each site for a given year. I used a for loop to make these plots for 2005 to 2010. Both sites follow the same trend for each month, however, the SBSP site is never warmer than SASP site. There are times where are almost the same temperature, but SBSP never exceeds SASP.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="snow-data-example.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a function for the monthly average temperature</span></span>
-<span id="cb40-2"><a href="snow-data-example.html#cb40-2" aria-hidden="true" tabindex="-1"></a>forcingmonthyear <span class="ot">&lt;-</span> <span class="cf">function</span>(forcing_data_full, year){</span>
-<span id="cb40-3"><a href="snow-data-example.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  monthlytemp<span class="ot">&lt;-</span>forcing_data_full <span class="sc">%&gt;%</span></span>
-<span id="cb40-4"><a href="snow-data-example.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month,year,site) <span class="sc">%&gt;%</span></span>
-<span id="cb40-5"><a href="snow-data-example.html#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">monthly_air_temp =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T)) <span class="sc">%&gt;%</span></span>
-<span id="cb40-6"><a href="snow-data-example.html#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(yr <span class="sc">==</span> year)</span>
-<span id="cb40-7"><a href="snow-data-example.html#cb40-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb40-8"><a href="snow-data-example.html#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plotting the function</span></span>
-<span id="cb40-9"><a href="snow-data-example.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  plots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthlytemp, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> monthly_air_temp, <span class="at">color =</span> site)) <span class="sc">+</span></span>
-<span id="cb40-10"><a href="snow-data-example.html#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb40-11"><a href="snow-data-example.html#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span>
-<span id="cb40-12"><a href="snow-data-example.html#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> monthlytemp<span class="sc">$</span>year,</span>
-<span id="cb40-13"><a href="snow-data-example.html#cb40-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
-<span id="cb40-14"><a href="snow-data-example.html#cb40-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Temperature (K)&quot;</span>)</span>
-<span id="cb40-15"><a href="snow-data-example.html#cb40-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb40-16"><a href="snow-data-example.html#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(plots)</span>
-<span id="cb40-17"><a href="snow-data-example.html#cb40-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-18"><a href="snow-data-example.html#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-19"><a href="snow-data-example.html#cb40-19" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2005</span>,<span class="dv">2006</span>,<span class="dv">2007</span>,<span class="dv">2008</span>,<span class="dv">2009</span>,<span class="dv">2010</span>)</span>
-<span id="cb40-20"><a href="snow-data-example.html#cb40-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb40-21"><a href="snow-data-example.html#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a for loop</span></span>
-<span id="cb40-22"><a href="snow-data-example.html#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (yr <span class="cf">in</span> years) {</span>
-<span id="cb40-23"><a href="snow-data-example.html#cb40-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">forcingmonthyear</span>(forcing_data_full, year)</span>
-<span id="cb40-24"><a href="snow-data-example.html#cb40-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="snow-data-example.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a function for the monthly average temperature</span></span>
+<span id="cb62-2"><a href="snow-data-example.html#cb62-2" aria-hidden="true" tabindex="-1"></a>forcingmonthyear <span class="ot">&lt;-</span> <span class="cf">function</span>(forcing_data_full, year){</span>
+<span id="cb62-3"><a href="snow-data-example.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  monthlytemp<span class="ot">&lt;-</span>forcing_data_full <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="snow-data-example.html#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(month,year,site) <span class="sc">%&gt;%</span></span>
+<span id="cb62-5"><a href="snow-data-example.html#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">monthly_air_temp =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-6"><a href="snow-data-example.html#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(yr <span class="sc">==</span> year)</span>
+<span id="cb62-7"><a href="snow-data-example.html#cb62-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-8"><a href="snow-data-example.html#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#plotting the function</span></span>
+<span id="cb62-9"><a href="snow-data-example.html#cb62-9" aria-hidden="true" tabindex="-1"></a>  plots <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthlytemp, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> monthly_air_temp, <span class="at">color =</span> site)) <span class="sc">+</span></span>
+<span id="cb62-10"><a href="snow-data-example.html#cb62-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb62-11"><a href="snow-data-example.html#cb62-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>year)</span>
+<span id="cb62-12"><a href="snow-data-example.html#cb62-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> monthlytemp<span class="sc">$</span>year,</span>
+<span id="cb62-13"><a href="snow-data-example.html#cb62-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb62-14"><a href="snow-data-example.html#cb62-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Temperature (K)&quot;</span>)</span>
+<span id="cb62-15"><a href="snow-data-example.html#cb62-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-16"><a href="snow-data-example.html#cb62-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(plots)</span>
+<span id="cb62-17"><a href="snow-data-example.html#cb62-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-18"><a href="snow-data-example.html#cb62-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-19"><a href="snow-data-example.html#cb62-19" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2005</span>,<span class="dv">2006</span>,<span class="dv">2007</span>,<span class="dv">2008</span>,<span class="dv">2009</span>,<span class="dv">2010</span>)</span>
+<span id="cb62-20"><a href="snow-data-example.html#cb62-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-21"><a href="snow-data-example.html#cb62-21" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a for loop</span></span>
+<span id="cb62-22"><a href="snow-data-example.html#cb62-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (yr <span class="cf">in</span> years) {</span>
+<span id="cb62-23"><a href="snow-data-example.html#cb62-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">forcingmonthyear</span>(forcing_data_full, year)</span>
+<span id="cb62-24"><a href="snow-data-example.html#cb62-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;month&#39;, &#39;year&#39;. You can override using the `.groups` argument.
 ## `summarise()` has grouped output by &#39;month&#39;, &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
 <p><img src="bookdownproj_files/figure-html/snowfunctionplot-1.png" width="672" /></p>
@@ -532,15 +571,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="average-daily-precipitation" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Average daily precipitation<a href="snow-data-example.html#average-daily-precipitation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this graph, I grouped the data by day by site to get the daily temperature.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="snow-data-example.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making an object for daily temperature</span></span>
-<span id="cb46-2"><a href="snow-data-example.html#cb46-2" aria-hidden="true" tabindex="-1"></a>dailytemp<span class="ot">&lt;-</span>forcing_data_full <span class="sc">%&gt;%</span></span>
-<span id="cb46-3"><a href="snow-data-example.html#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(day,site) <span class="sc">%&gt;%</span></span>
-<span id="cb46-4"><a href="snow-data-example.html#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">daily_air_temp =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T))</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="snow-data-example.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making an object for daily temperature</span></span>
+<span id="cb68-2"><a href="snow-data-example.html#cb68-2" aria-hidden="true" tabindex="-1"></a>dailytemp<span class="ot">&lt;-</span>forcing_data_full <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="snow-data-example.html#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(day,site) <span class="sc">%&gt;%</span></span>
+<span id="cb68-4"><a href="snow-data-example.html#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">daily_air_temp =</span> <span class="fu">mean</span>(air.temp..K.,<span class="at">na.rm=</span>T))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;day&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="snow-data-example.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting bonus</span></span>
-<span id="cb48-2"><a href="snow-data-example.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dailytemp, <span class="fu">aes</span>(<span class="at">x=</span>day, <span class="at">y=</span>daily_air_temp, <span class="at">color=</span>site))<span class="sc">+</span></span>
-<span id="cb48-3"><a href="snow-data-example.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb48-4"><a href="snow-data-example.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Day of the Month&#39;</span>, <span class="at">y=</span><span class="st">&#39;Daily Air Temperature&#39;</span>, <span class="at">title =</span> <span class="st">&quot;Daily Temperature&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="snow-data-example.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting bonus</span></span>
+<span id="cb70-2"><a href="snow-data-example.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dailytemp, <span class="fu">aes</span>(<span class="at">x=</span>day, <span class="at">y=</span>daily_air_temp, <span class="at">color=</span>site))<span class="sc">+</span></span>
+<span id="cb70-3"><a href="snow-data-example.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb70-4"><a href="snow-data-example.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Day of the Month&#39;</span>, <span class="at">y=</span><span class="st">&#39;Daily Air Temperature&#39;</span>, <span class="at">title =</span> <span class="st">&quot;Daily Temperature&quot;</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/snowbonus-1.png" width="672" /></p>
 
 </div>
@@ -550,8 +589,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="hayman-fire-recovery.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="hayman-fire-recovery.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lagos-analysis-part-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
