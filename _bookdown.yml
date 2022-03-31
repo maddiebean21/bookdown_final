@@ -14,5 +14,5 @@ rmd_files:
   - "2-hw-hayman-fire.Rmd"
   - "3-hw-snow-functions.Rmd"
   - "4-1-hw-spatial.Rmd"
- - "4-2-hw-WaterQuality.Rmd"
-#  - "5-corn.Rmd"
+  - "4-2-hw-WaterQuality.Rmd"
+  - "5-corn.Rmd"

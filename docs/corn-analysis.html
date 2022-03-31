@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Corn Analysis | Final Project</title>
+  <meta name="description" content="This is the final data science project for the Introduction to Data Science Course ESS 580A7." />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Corn Analysis | Final Project" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the final data science project for the Introduction to Data Science Course ESS 580A7." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Corn Analysis | Final Project" />
+  
+  <meta name="twitter:description" content="This is the final data science project for the Introduction to Data Science Course ESS 580A7." />
+  
+
+<meta name="author" content="Madeline Bean" />
+
+
+<meta name="date" content="2022-03-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lagos-analysis-part-2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet" />
+<script src="libs/dygraphs-1.1.1/dygraph-combined.js"></script>
+<script src="libs/dygraphs-1.1.1/shapes.js"></script>
+<script src="libs/moment-2.8.4/moment.js"></script>
+<script src="libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
+<script src="libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
+<script src="libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.0/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.0/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Final Project</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a>
+<ul>
+<li><a href="index.html#view-github-code">View GitHub Code<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html"><i class="fa fa-check"></i><b>1</b> Poudre River Interactive Graph<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#methods"><i class="fa fa-check"></i><b>1.1</b> Methods<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#site-description"><i class="fa fa-check"></i><b>1.2</b> Site Description<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#data-acquisition-and-plotting-tests"><i class="fa fa-check"></i><b>1.3</b> Data Acquisition and Plotting Tests<span></span></a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#data-download"><i class="fa fa-check"></i><b>1.3.1</b> Data Download<span></span></a></li>
+<li class="chapter" data-level="1.3.2" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#static-data-plotter"><i class="fa fa-check"></i><b>1.3.2</b> Static Data Plotter<span></span></a></li>
+<li class="chapter" data-level="1.3.3" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#interactive-data-plotter"><i class="fa fa-check"></i><b>1.3.3</b> Interactive Data Plotter<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#interactive-graph"><i class="fa fa-check"></i><b>1.4</b> Interactive Graph<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="poudre-river-interactive-graph.html"><a href="poudre-river-interactive-graph.html#information-about-the-poudre-river"><i class="fa fa-check"></i><b>1.5</b> Information about the Poudre River<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html"><i class="fa fa-check"></i><b>2</b> Hayman Fire Recovery<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#reading-in-the-data"><i class="fa fa-check"></i><b>2.1</b> Reading in the Data<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#ndvi-and-ndmi-correlation"><i class="fa fa-check"></i><b>2.2</b> NDVI and NDMI Correlation<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#average-ndsi-and-ndvi-correlation"><i class="fa fa-check"></i><b>2.3</b> Average NDSI and NDVI Correlation<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#snow-effect-differences"><i class="fa fa-check"></i><b>2.4</b> Snow Effect Differences<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#average-greenest-month"><i class="fa fa-check"></i><b>2.5</b> Average Greenest Month<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="hayman-fire-recovery.html"><a href="hayman-fire-recovery.html#average-snowiest-month"><i class="fa fa-check"></i><b>2.6</b> Average Snowiest Month<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="snow-data-example.html"><a href="snow-data-example.html"><i class="fa fa-check"></i><b>3</b> Snow Data Example<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="snow-data-example.html"><a href="snow-data-example.html#reading-an-html"><i class="fa fa-check"></i><b>3.1</b> Reading an html<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="snow-data-example.html"><a href="snow-data-example.html#extract-csv-links-from-webpage"><i class="fa fa-check"></i><b>3.1.1</b> Extract CSV links from webpage<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="snow-data-example.html"><a href="snow-data-example.html#data-download-1"><i class="fa fa-check"></i><b>3.2</b> Data Download<span></span></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="snow-data-example.html"><a href="snow-data-example.html#download-data-in-a-for-loop"><i class="fa fa-check"></i><b>3.2.1</b> Download data in a for loop<span></span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="snow-data-example.html"><a href="snow-data-example.html#download-data-in-a-map"><i class="fa fa-check"></i><b>3.2.2</b> Download data in a map<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="snow-data-example.html"><a href="snow-data-example.html#data-read-in"><i class="fa fa-check"></i><b>3.3</b> Data read-in<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="snow-data-example.html"><a href="snow-data-example.html#read-in-just-the-snow-data-as-a-loop"><i class="fa fa-check"></i><b>3.3.1</b> Read in just the snow data as a loop<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="snow-data-example.html"><a href="snow-data-example.html#read-in-the-data-as-a-map-function"><i class="fa fa-check"></i><b>3.3.2</b> Read in the data as a map function<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="snow-data-example.html"><a href="snow-data-example.html#plot-snow-data"><i class="fa fa-check"></i><b>3.3.3</b> Plot snow data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="snow-data-example.html"><a href="snow-data-example.html#extracting-the-meteorological-data-urls"><i class="fa fa-check"></i><b>3.4</b> Extracting the meteorological data URLs<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="snow-data-example.html"><a href="snow-data-example.html#download-the-meteorological-data."><i class="fa fa-check"></i><b>3.5</b> Download the meteorological data.<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="snow-data-example.html"><a href="snow-data-example.html#custom-function-writing"><i class="fa fa-check"></i><b>3.6</b> Custom function writing<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="snow-data-example.html"><a href="snow-data-example.html#summary-of-meteorlogical-files"><i class="fa fa-check"></i><b>3.7</b> Summary of meteorlogical files<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="snow-data-example.html"><a href="snow-data-example.html#monthy-average-temperature-plot"><i class="fa fa-check"></i><b>3.8</b> Monthy average temperature plot<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="snow-data-example.html"><a href="snow-data-example.html#average-daily-precipitation"><i class="fa fa-check"></i><b>3.9</b> Average daily precipitation<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html"><i class="fa fa-check"></i><b>4</b> LAGOS Analysis part 1<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#loading-in-data"><i class="fa fa-check"></i><b>4.1</b> Loading in data<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#first-download-and-then-specifically-grab-the-locus-or-site-lat-longs"><i class="fa fa-check"></i><b>4.1.1</b> First download and then specifically grab the locus (or site lat longs)<span></span></a></li>
+<li class="chapter" data-level="4.1.2" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#convert-to-spatial-data"><i class="fa fa-check"></i><b>4.1.2</b> Convert to spatial data<span></span></a></li>
+<li class="chapter" data-level="4.1.3" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#subset-to-only-minnesota"><i class="fa fa-check"></i><b>4.1.3</b> Subset to only Minnesota<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#map-outline-of-iowa-and-illinois-similar-to-minnesota-map-upstream"><i class="fa fa-check"></i><b>4.2</b> Map outline of Iowa and Illinois (similar to Minnesota map upstream)<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#subsetting-lagos-data-to-these-sites"><i class="fa fa-check"></i><b>4.3</b> Subsetting LAGOS data to these sites<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#distribution-of-lake-size-in-iowa-vs.-minnesota"><i class="fa fa-check"></i><b>4.4</b> Distribution of lake size in Iowa vs. Minnesota<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#interactive-plot-of-lakes-in-iowa-and-illinois-colored-them-by-lake-area-in-hectares"><i class="fa fa-check"></i><b>4.5</b> Interactive plot of lakes in Iowa and Illinois, colored them by lake area in hectares<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="lagos-analysis-part-1.html"><a href="lagos-analysis-part-1.html#other-data-sources-that-i-might-use-to-understand-how-reservoirs-and-natural-lakes-vary-in-size-in-these-three-states"><i class="fa fa-check"></i><b>4.6</b> Other data sources that I might use to understand how reservoirs and natural lakes vary in size in these three states?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html"><i class="fa fa-check"></i><b>5</b> LAGOS Analysis Part 2<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#loading-in-data-1"><i class="fa fa-check"></i><b>5.1</b> Loading in data<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#first-download-and-then-specifically-grab-the-locus-or-site-lat-longs-1"><i class="fa fa-check"></i><b>5.1.1</b> First download and then specifically grab the locus (or site lat longs)<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#subset-columns-nutr-to-only-keep-key-info-that-i-wanted"><i class="fa fa-check"></i><b>5.1.2</b> Subset columns nutr to only keep key info that I wanted<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#keep-sites-with-at-least-200-observations"><i class="fa fa-check"></i><b>5.1.3</b> Keep sites with at least 200 observations<span></span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#join-water-quality-data-to-spatial-data"><i class="fa fa-check"></i><b>5.1.4</b> Join water quality data to spatial data<span></span></a></li>
+<li class="chapter" data-level="5.1.5" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#mean-chl_a-map"><i class="fa fa-check"></i><b>5.1.5</b> Mean Chl_a map<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#the-correlation-between-secchi-disk-depth-and-chlorophyll-a-for-sites-with-at-least-200-observations"><i class="fa fa-check"></i><b>5.2</b> The correlation between Secchi Disk Depth and Chlorophyll a for sites with at least 200 observations<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#why-might-this-be-the-case"><i class="fa fa-check"></i><b>5.3</b> Why might this be the case?<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#states-that-have-the-most-data"><i class="fa fa-check"></i><b>5.4</b> States that have the most data<span></span></a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#first-i-made-a-lagos-spatial-dataset-that-has-the-total-number-of-counts-per-site."><i class="fa fa-check"></i><b>5.4.1</b> First I made a lagos spatial dataset that has the total number of counts per site.<span></span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#second-i-joined-this-point-dataset-to-the-us_boundaries-data."><i class="fa fa-check"></i><b>5.4.2</b> Second, I joined this point dataset to the us_boundaries data.<span></span></a></li>
+<li class="chapter" data-level="5.4.3" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#then-i-grouped-by-state-and-sum-all-the-observations-in-that-state-and-arrange-that-data-from-most-to-least-total-observations-per-state."><i class="fa fa-check"></i><b>5.4.3</b> Then I grouped by state and sum all the observations in that state and arrange that data from most to least total observations per state.<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lagos-analysis-part-2.html"><a href="lagos-analysis-part-2.html#spatial-pattern-in-secchi-disk-depth-for-lakes-with-at-least-200-observations"><i class="fa fa-check"></i><b>5.5</b> Spatial pattern in Secchi disk depth for lakes with at least 200 observations<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="corn-analysis.html"><a href="corn-analysis.html"><i class="fa fa-check"></i><b>6</b> Corn Analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="corn-analysis.html"><a href="corn-analysis.html#weather-data-analysis"><i class="fa fa-check"></i><b>6.1</b> Weather Data Analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="corn-analysis.html"><a href="corn-analysis.html#load-the-prism-daily-maximum-temperatures"><i class="fa fa-check"></i><b>6.1.1</b> Load the PRISM daily maximum temperatures<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="corn-analysis.html"><a href="corn-analysis.html#temperature-trends"><i class="fa fa-check"></i><b>6.2</b> Temperature trends<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="corn-analysis.html"><a href="corn-analysis.html#summer-temperature-trends-winneshiek-county"><i class="fa fa-check"></i><b>6.2.1</b> Summer temperature trends: Winneshiek County<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="corn-analysis.html"><a href="corn-analysis.html#winter-temperatures---winneshiek-county"><i class="fa fa-check"></i><b>6.2.2</b> Winter Temperatures - Winneshiek County<span></span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="corn-analysis.html"><a href="corn-analysis.html#multiple-regression-quadratic-time-trend"><i class="fa fa-check"></i><b>6.2.3</b> Multiple regression – Quadratic time trend<span></span></a></li>
+<li class="chapter" data-level="6.2.4" data-path="corn-analysis.html"><a href="corn-analysis.html#download-nass-corn-yield-data"><i class="fa fa-check"></i><b>6.2.4</b> Download NASS corn yield data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="corn-analysis.html"><a href="corn-analysis.html#extract-winneshiek-county-corn-yields-fit-a-linear-time-trend-make-a-plot."><i class="fa fa-check"></i><b>6.3</b> Extract Winneshiek County corn yields, fit a linear time trend, make a plot.<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="corn-analysis.html"><a href="corn-analysis.html#fitting-a-quadratic-time-trend-i.e.-year-year2-and-making-a-plot."><i class="fa fa-check"></i><b>6.4</b> Fitting a quadratic time trend (i.e., year + year^2) and making a plot.<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="corn-analysis.html"><a href="corn-analysis.html#time-series-analyzing-the-relationship-between-temperature-and-yields-for-the-winneshiek-county-time-series."><i class="fa fa-check"></i><b>6.5</b> Time Series: Analyzing the relationship between temperature and yields for the Winneshiek County time series.<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="corn-analysis.html"><a href="corn-analysis.html#cross-section-analyzing-the-relationship-between-temperature-and-yield-across-all-counties-in-2018."><i class="fa fa-check"></i><b>6.6</b> Cross-Section: Analyzing the relationship between temperature and yield across all counties in 2018.<span></span></a></li>
+<li class="chapter" data-level="6.7" data-path="corn-analysis.html"><a href="corn-analysis.html#panel-plot-comparing-actual-and-fitted-yields-and-interpret-the-results-of-your-model."><i class="fa fa-check"></i><b>6.7</b> Panel: Plot comparing actual and fitted yields and interpret the results of your model.<span></span></a></li>
+<li class="chapter" data-level="6.8" data-path="corn-analysis.html"><a href="corn-analysis.html#soybeans-time-series-plot"><i class="fa fa-check"></i><b>6.8</b> Soybeans: Time series plot<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Final Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="corn-analysis" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Corn Analysis<a href="corn-analysis.html#corn-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this last assignment, I used temperature from the PRISM database and corn yield data from the NASS database to create linear regression models. We looked at summer and winter temperature trends to explore the relationship of summer temperatures and corn yield.</p>
+<div id="weather-data-analysis" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Weather Data Analysis<a href="corn-analysis.html#weather-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-the-prism-daily-maximum-temperatures" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Load the PRISM daily maximum temperatures<a href="corn-analysis.html#load-the-prism-daily-maximum-temperatures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="corn-analysis.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">#daily max temperature</span></span>
+<span id="cb96-2"><a href="corn-analysis.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co">#dimensions: counties by days by years</span></span>
+<span id="cb96-3"><a href="corn-analysis.html#cb96-3" aria-hidden="true" tabindex="-1"></a>prism <span class="ot">&lt;-</span> <span class="fu">readMat</span>(<span class="st">&quot;/Users/maddiebean21/Desktop/School/ESS580A7/bookdown_final/data/05-hw-corn/prismiowa.mat&quot;</span>)</span>
+<span id="cb96-4"><a href="corn-analysis.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="corn-analysis.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co"># look at county 1</span></span>
+<span id="cb96-6"><a href="corn-analysis.html#cb96-6" aria-hidden="true" tabindex="-1"></a>t_1981_c1 <span class="ot">&lt;-</span> prism<span class="sc">$</span>tmaxdaily.iowa[<span class="dv">1</span>,,<span class="dv">1</span>]</span>
+<span id="cb96-7"><a href="corn-analysis.html#cb96-7" aria-hidden="true" tabindex="-1"></a>t_1981_c1[<span class="dv">366</span>]</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="corn-analysis.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">366</span>, t_1981_c1, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/corntmax%20data-1.png" width="672" /></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="corn-analysis.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting</span></span>
+<span id="cb99-2"><a href="corn-analysis.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb99-3"><a href="corn-analysis.html#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">366</span>, <span class="at">y =</span> t_1981_c1)) <span class="sc">+</span></span>
+<span id="cb99-4"><a href="corn-analysis.html#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb99-5"><a href="corn-analysis.html#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;day of year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb99-6"><a href="corn-analysis.html#cb99-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;daily maximum temperature (°C)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb99-7"><a href="corn-analysis.html#cb99-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Daily Maximum Temperature, Iowa County #1&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="bookdownproj_files/figure-html/corntmax%20data-2.png" width="672" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="corn-analysis.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign dimension names to tmax matrix</span></span>
+<span id="cb101-2"><a href="corn-analysis.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(prism<span class="sc">$</span>tmaxdaily.iowa) <span class="ot">&lt;-</span> <span class="fu">list</span>(prism<span class="sc">$</span>COUNTYFP, <span class="dv">1</span><span class="sc">:</span><span class="dv">366</span>, prism<span class="sc">$</span>years)</span>
+<span id="cb101-3"><a href="corn-analysis.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="corn-analysis.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co"># converted 3d matrix into a data frame</span></span>
+<span id="cb101-5"><a href="corn-analysis.html#cb101-5" aria-hidden="true" tabindex="-1"></a>tmaxdf <span class="ot">&lt;-</span> <span class="fu">as.data.frame.table</span>(prism<span class="sc">$</span>tmaxdaily.iowa)</span>
+<span id="cb101-6"><a href="corn-analysis.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="corn-analysis.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co"># relabel the columns</span></span>
+<span id="cb101-8"><a href="corn-analysis.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tmaxdf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;countyfp&quot;</span>,<span class="st">&quot;doy&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;tmax&quot;</span>)</span>
+<span id="cb101-9"><a href="corn-analysis.html#cb101-9" aria-hidden="true" tabindex="-1"></a>tmaxdf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(tmaxdf)</span></code></pre></div>
+</div>
+</div>
+<div id="temperature-trends" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Temperature trends<a href="corn-analysis.html#temperature-trends" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summer-temperature-trends-winneshiek-county" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Summer temperature trends: Winneshiek County<a href="corn-analysis.html#summer-temperature-trends-winneshiek-county" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="corn-analysis.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># making the data numeric</span></span>
+<span id="cb102-2"><a href="corn-analysis.html#cb102-2" aria-hidden="true" tabindex="-1"></a>tmaxdf<span class="sc">$</span>doy <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(tmaxdf<span class="sc">$</span>doy)</span>
+<span id="cb102-3"><a href="corn-analysis.html#cb102-3" aria-hidden="true" tabindex="-1"></a>tmaxdf<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(tmaxdf<span class="sc">$</span>year))</span>
+<span id="cb102-4"><a href="corn-analysis.html#cb102-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-5"><a href="corn-analysis.html#cb102-5" aria-hidden="true" tabindex="-1"></a>winnesummer <span class="ot">&lt;-</span> tmaxdf <span class="sc">%&gt;%</span></span>
+<span id="cb102-6"><a href="corn-analysis.html#cb102-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(countyfp<span class="sc">==</span><span class="dv">191</span> <span class="sc">&amp;</span> doy <span class="sc">&gt;=</span> <span class="dv">152</span> <span class="sc">&amp;</span> doy <span class="sc">&lt;=</span> <span class="dv">243</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-7"><a href="corn-analysis.html#cb102-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb102-8"><a href="corn-analysis.html#cb102-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meantmax =</span> <span class="fu">mean</span>(tmax))</span>
+<span id="cb102-9"><a href="corn-analysis.html#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-10"><a href="corn-analysis.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnesummer, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> meantmax)) <span class="sc">+</span></span>
+<span id="cb102-11"><a href="corn-analysis.html#cb102-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb102-12"><a href="corn-analysis.html#cb102-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb102-13"><a href="corn-analysis.html#cb102-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Tmax (°C)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb102-14"><a href="corn-analysis.html#cb102-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdownproj_files/figure-html/corntemp%20trends-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="corn-analysis.html#cb104-1" aria-hidden="true" tabindex="-1"></a>lm_summertmax <span class="ot">&lt;-</span> <span class="fu">lm</span>(meantmax <span class="sc">~</span> year, winnesummer)</span>
+<span id="cb104-2"><a href="corn-analysis.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_summertmax)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = meantmax ~ year, data = winnesummer)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.5189 -0.7867 -0.0341  0.6859  3.7415 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 41.57670   36.44848   1.141    0.262
+## year        -0.00747    0.01823  -0.410    0.684
+## 
+## Residual standard error: 1.232 on 36 degrees of freedom
+## Multiple R-squared:  0.004644,   Adjusted R-squared:  -0.02301 
+## F-statistic: 0.168 on 1 and 36 DF,  p-value: 0.6844</code></pre>
+</div>
+<div id="winter-temperatures---winneshiek-county" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Winter Temperatures - Winneshiek County<a href="corn-analysis.html#winter-temperatures---winneshiek-county" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="corn-analysis.html#cb106-1" aria-hidden="true" tabindex="-1"></a>winnewinter <span class="ot">&lt;-</span> tmaxdf <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="corn-analysis.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(countyfp<span class="sc">==</span><span class="dv">191</span> <span class="sc">&amp;</span> (doy <span class="sc">&lt;=</span> <span class="dv">59</span> <span class="sc">|</span> doy <span class="sc">&gt;=</span> <span class="dv">335</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(tmax)) <span class="sc">%&gt;%</span></span>
+<span id="cb106-3"><a href="corn-analysis.html#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb106-4"><a href="corn-analysis.html#cb106-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meantmax =</span> <span class="fu">mean</span>(tmax))</span>
+<span id="cb106-5"><a href="corn-analysis.html#cb106-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-6"><a href="corn-analysis.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnewinter, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> meantmax)) <span class="sc">+</span></span>
+<span id="cb106-7"><a href="corn-analysis.html#cb106-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb106-8"><a href="corn-analysis.html#cb106-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb106-9"><a href="corn-analysis.html#cb106-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Tmax (°C)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb106-10"><a href="corn-analysis.html#cb106-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdownproj_files/figure-html/cornwinter%20temps-1.png" width="672" /></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="corn-analysis.html#cb108-1" aria-hidden="true" tabindex="-1"></a>lm_wintertmax <span class="ot">&lt;-</span> <span class="fu">lm</span>(meantmax <span class="sc">~</span> year, winnewinter)</span>
+<span id="cb108-2"><a href="corn-analysis.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_wintertmax)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = meantmax ~ year, data = winnewinter)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5978 -1.4917 -0.3053  1.3778  4.5709 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) -29.87825   60.48100  -0.494    0.624
+## year          0.01368    0.03025   0.452    0.654
+## 
+## Residual standard error: 2.045 on 36 degrees of freedom
+## Multiple R-squared:  0.005652,   Adjusted R-squared:  -0.02197 
+## F-statistic: 0.2046 on 1 and 36 DF,  p-value: 0.6537</code></pre>
+</div>
+<div id="multiple-regression-quadratic-time-trend" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Multiple regression – Quadratic time trend<a href="corn-analysis.html#multiple-regression-quadratic-time-trend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="corn-analysis.html#cb110-1" aria-hidden="true" tabindex="-1"></a>winnewinter<span class="sc">$</span>yearsq <span class="ot">&lt;-</span> winnewinter<span class="sc">$</span>year<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb110-2"><a href="corn-analysis.html#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="corn-analysis.html#cb110-3" aria-hidden="true" tabindex="-1"></a>lm_wintertmaxquad <span class="ot">&lt;-</span> <span class="fu">lm</span>(meantmax <span class="sc">~</span> year <span class="sc">+</span> yearsq, winnewinter)</span>
+<span id="cb110-4"><a href="corn-analysis.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_wintertmaxquad)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = meantmax ~ year + yearsq, data = winnewinter)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.3539 -1.2985 -0.2813  1.4055  4.2620 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) -1.086e+04  1.238e+04  -0.877    0.386
+## year         1.085e+01  1.239e+01   0.876    0.387
+## yearsq      -2.710e-03  3.097e-03  -0.875    0.388
+## 
+## Residual standard error: 2.051 on 35 degrees of freedom
+## Multiple R-squared:  0.02694,    Adjusted R-squared:  -0.02867 
+## F-statistic: 0.4845 on 2 and 35 DF,  p-value: 0.6201</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="corn-analysis.html#cb112-1" aria-hidden="true" tabindex="-1"></a>winnewinter<span class="sc">$</span>fitted <span class="ot">&lt;-</span> lm_wintertmaxquad<span class="sc">$</span>fitted.values</span>
+<span id="cb112-2"><a href="corn-analysis.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-3"><a href="corn-analysis.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnewinter) <span class="sc">+</span></span>
+<span id="cb112-4"><a href="corn-analysis.html#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> meantmax)) <span class="sc">+</span></span>
+<span id="cb112-5"><a href="corn-analysis.html#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> fitted)) <span class="sc">+</span></span>
+<span id="cb112-6"><a href="corn-analysis.html#cb112-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb112-7"><a href="corn-analysis.html#cb112-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;tmax&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/cornquadratic%20temp%20trend-1.png" width="672" /></p>
+</div>
+<div id="download-nass-corn-yield-data" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Download NASS corn yield data<a href="corn-analysis.html#download-nass-corn-yield-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="corn-analysis.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our API key with NASS</span></span>
+<span id="cb113-2"><a href="corn-analysis.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nassqs_auth</span>(<span class="at">key =</span> <span class="st">&quot;693A4922-893D-3AF4-A23B-6288B220EC7E&quot;</span>)</span>
+<span id="cb113-3"><a href="corn-analysis.html#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="corn-analysis.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters to query on </span></span>
+<span id="cb113-5"><a href="corn-analysis.html#cb113-5" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">commodity_desc =</span> <span class="st">&quot;CORN&quot;</span>, <span class="at">util_practice_desc =</span> <span class="st">&quot;GRAIN&quot;</span>, <span class="at">prodn_practice_desc =</span> <span class="st">&quot;ALL PRODUCTION PRACTICES&quot;</span>, <span class="at">year__GE =</span> <span class="dv">1981</span>, <span class="at">state_alpha =</span> <span class="st">&quot;IA&quot;</span>)</span>
+<span id="cb113-6"><a href="corn-analysis.html#cb113-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-7"><a href="corn-analysis.html#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="co"># download</span></span>
+<span id="cb113-8"><a href="corn-analysis.html#cb113-8" aria-hidden="true" tabindex="-1"></a>cornyieldsall <span class="ot">&lt;-</span> <span class="fu">nassqs_yields</span>(params)</span>
+<span id="cb113-9"><a href="corn-analysis.html#cb113-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-10"><a href="corn-analysis.html#cb113-10" aria-hidden="true" tabindex="-1"></a>cornyieldsall<span class="sc">$</span>county_ansi <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cornyieldsall<span class="sc">$</span>county_ansi)</span>
+<span id="cb113-11"><a href="corn-analysis.html#cb113-11" aria-hidden="true" tabindex="-1"></a>cornyieldsall<span class="sc">$</span>yield <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cornyieldsall<span class="sc">$</span>Value)</span>
+<span id="cb113-12"><a href="corn-analysis.html#cb113-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-13"><a href="corn-analysis.html#cb113-13" aria-hidden="true" tabindex="-1"></a><span class="co"># clean and filter this dataset</span></span>
+<span id="cb113-14"><a href="corn-analysis.html#cb113-14" aria-hidden="true" tabindex="-1"></a>cornyields <span class="ot">&lt;-</span> <span class="fu">select</span>(cornyieldsall, county_ansi, county_name, yield, year) <span class="sc">%&gt;%</span></span>
+<span id="cb113-15"><a href="corn-analysis.html#cb113-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(county_ansi) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(yield))</span>
+<span id="cb113-16"><a href="corn-analysis.html#cb113-16" aria-hidden="true" tabindex="-1"></a>cornyields <span class="ot">&lt;-</span> <span class="fu">tibble</span>(cornyields)</span></code></pre></div>
+</div>
+</div>
+<div id="extract-winneshiek-county-corn-yields-fit-a-linear-time-trend-make-a-plot." class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Extract Winneshiek County corn yields, fit a linear time trend, make a plot.<a href="corn-analysis.html#extract-winneshiek-county-corn-yields-fit-a-linear-time-trend-make-a-plot." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="corn-analysis.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating an object for Winneshiek County corn yields</span></span>
+<span id="cb114-2"><a href="corn-analysis.html#cb114-2" aria-hidden="true" tabindex="-1"></a>winnecornyield <span class="ot">&lt;-</span> cornyields <span class="sc">%&gt;%</span></span>
+<span id="cb114-3"><a href="corn-analysis.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(county_ansi<span class="sc">==</span><span class="st">&quot;191&quot;</span>)</span>
+<span id="cb114-4"><a href="corn-analysis.html#cb114-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-5"><a href="corn-analysis.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#fitting a linear time trend</span></span>
+<span id="cb114-6"><a href="corn-analysis.html#cb114-6" aria-hidden="true" tabindex="-1"></a>lm_winnecornyield <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> year, <span class="at">data =</span> winnecornyield)</span>
+<span id="cb114-7"><a href="corn-analysis.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_winnecornyield)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = yield ~ year, data = winnecornyield)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -51.163  -1.841   2.363   9.437  24.376 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -4763.290    448.286  -10.63 4.46e-13 ***
+## year            2.457      0.224   10.96 1.77e-13 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 16.97 on 39 degrees of freedom
+## Multiple R-squared:  0.7551, Adjusted R-squared:  0.7488 
+## F-statistic: 120.2 on 1 and 39 DF,  p-value: 1.767e-13</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="corn-analysis.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting Winneshiek&#39;s corn yields with linear trend</span></span>
+<span id="cb116-2"><a href="corn-analysis.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnecornyield, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> yield)) <span class="sc">+</span></span>
+<span id="cb116-3"><a href="corn-analysis.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb116-4"><a href="corn-analysis.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb116-5"><a href="corn-analysis.html#cb116-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;yield&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Linear Time Trend Winneshiek County&quot;</span>) <span class="sc">+</span></span>
+<span id="cb116-6"><a href="corn-analysis.html#cb116-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdownproj_files/figure-html/cornextract-1.png" width="672" /></p>
+<p>The plot shows that the data following relatively close to the trend line, giving us a significant time trend. The p-value given from the linear model is significantly below 0.05, which tells us that there is a strong relationship between year and yield in Winneshiek County.</p>
+</div>
+<div id="fitting-a-quadratic-time-trend-i.e.-year-year2-and-making-a-plot." class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Fitting a quadratic time trend (i.e., year + year^2) and making a plot.<a href="corn-analysis.html#fitting-a-quadratic-time-trend-i.e.-year-year2-and-making-a-plot." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="corn-analysis.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding years^2 column to the winneshiek corn yield data set</span></span>
+<span id="cb118-2"><a href="corn-analysis.html#cb118-2" aria-hidden="true" tabindex="-1"></a>winnecornyield<span class="sc">$</span>yearsq <span class="ot">&lt;-</span> winnecornyield<span class="sc">$</span>year<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb118-3"><a href="corn-analysis.html#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="corn-analysis.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a linear model for the quadratic winneshiek corn yield data set</span></span>
+<span id="cb118-5"><a href="corn-analysis.html#cb118-5" aria-hidden="true" tabindex="-1"></a>lm_winnecornyieldquad <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> year <span class="sc">+</span> yearsq, winnecornyield)</span>
+<span id="cb118-6"><a href="corn-analysis.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_winnecornyieldquad)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = yield ~ year + yearsq, data = winnecornyield)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -51.384  -3.115   1.388   9.743  25.324 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  2.583e+04  8.580e+04   0.301    0.765
+## year        -2.812e+01  8.576e+01  -0.328    0.745
+## yearsq       7.641e-03  2.143e-02   0.357    0.723
+## 
+## Residual standard error: 17.17 on 38 degrees of freedom
+## Multiple R-squared:  0.7559, Adjusted R-squared:  0.7431 
+## F-statistic: 58.84 on 2 and 38 DF,  p-value: 2.311e-12</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="corn-analysis.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding fitted values column to the winneshiek corn yield data set</span></span>
+<span id="cb120-2"><a href="corn-analysis.html#cb120-2" aria-hidden="true" tabindex="-1"></a>winnecornyield<span class="sc">$</span>fitted <span class="ot">&lt;-</span> lm_winnecornyieldquad<span class="sc">$</span>fitted.values</span>
+<span id="cb120-3"><a href="corn-analysis.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="corn-analysis.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Plotting the quadratic time trend</span></span>
+<span id="cb120-5"><a href="corn-analysis.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnecornyield) <span class="sc">+</span></span>
+<span id="cb120-6"><a href="corn-analysis.html#cb120-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> yield)) <span class="sc">+</span></span>
+<span id="cb120-7"><a href="corn-analysis.html#cb120-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> fitted)) <span class="sc">+</span></span>
+<span id="cb120-8"><a href="corn-analysis.html#cb120-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb120-9"><a href="corn-analysis.html#cb120-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;yield&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Quadratic Time Trend Winneshiek County&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/cornquad-1.png" width="672" /></p>
+<p>The trend line/slope is still increasing, not showing us an evidence of slowing down yield.</p>
+</div>
+<div id="time-series-analyzing-the-relationship-between-temperature-and-yields-for-the-winneshiek-county-time-series." class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Time Series: Analyzing the relationship between temperature and yields for the Winneshiek County time series.<a href="corn-analysis.html#time-series-analyzing-the-relationship-between-temperature-and-yields-for-the-winneshiek-county-time-series." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="corn-analysis.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#combining summer and corn yield data sets</span></span>
+<span id="cb121-2"><a href="corn-analysis.html#cb121-2" aria-hidden="true" tabindex="-1"></a>winnecombinedsummer <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(winnecornyield, winnesummer)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;year&quot;</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="corn-analysis.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding column for squared temperature</span></span>
+<span id="cb123-2"><a href="corn-analysis.html#cb123-2" aria-hidden="true" tabindex="-1"></a>winnecombinedsummer<span class="sc">$</span>tempsq <span class="ot">&lt;-</span> winnecombinedsummer<span class="sc">$</span>meantmax<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb123-3"><a href="corn-analysis.html#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-4"><a href="corn-analysis.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="co">#linear model</span></span>
+<span id="cb123-5"><a href="corn-analysis.html#cb123-5" aria-hidden="true" tabindex="-1"></a>lm_comb_summer_quad <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> meantmax <span class="sc">+</span> tempsq, winnecombinedsummer)</span>
+<span id="cb123-6"><a href="corn-analysis.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_comb_summer_quad)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = yield ~ meantmax + tempsq, data = winnecombinedsummer)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -56.587 -22.262  -0.982  22.409  52.798 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) -4223.604   1446.639  -2.920  0.00609 **
+## meantmax      328.918    107.068   3.072  0.00410 **
+## tempsq         -6.173      1.979  -3.119  0.00362 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 29.5 on 35 degrees of freedom
+## Multiple R-squared:  0.2417, Adjusted R-squared:  0.1984 
+## F-statistic: 5.579 on 2 and 35 DF,  p-value: 0.007887</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="corn-analysis.html#cb125-1" aria-hidden="true" tabindex="-1"></a>winnecombinedsummer<span class="sc">$</span>quadfitted <span class="ot">&lt;-</span> lm_comb_summer_quad<span class="sc">$</span>fitted.values</span>
+<span id="cb125-2"><a href="corn-analysis.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="corn-analysis.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the data together</span></span>
+<span id="cb125-4"><a href="corn-analysis.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnecombinedsummer) <span class="sc">+</span></span>
+<span id="cb125-5"><a href="corn-analysis.html#cb125-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> meantmax, <span class="at">y =</span> yield)) <span class="sc">+</span></span>
+<span id="cb125-6"><a href="corn-analysis.html#cb125-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>meantmax, <span class="at">y=</span>quadfitted))<span class="sc">+</span></span>
+<span id="cb125-7"><a href="corn-analysis.html#cb125-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb125-8"><a href="corn-analysis.html#cb125-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;temperature&quot;</span>, <span class="at">y =</span> <span class="st">&quot;yield&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Temperature vs. Yield Winneshiek County&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>For this plot, I used data on yield and summer average maximum temperatures. Adding tmax^2 to my model is helpful because it helps us visualize that more average temperatures produce that highest yield, where the extreme low or high temp do not produce high yields. Plotting years on this graph would not be beneficial because it would only show the yield increasing as the years pass. The p-value is 0.007887, which is less than alpha, meaning that there is a significant evidence that when temperature is between 26 - 28 degrees Celsius, yields are the highest.</p>
+</div>
+<div id="cross-section-analyzing-the-relationship-between-temperature-and-yield-across-all-counties-in-2018." class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Cross-Section: Analyzing the relationship between temperature and yield across all counties in 2018.<a href="corn-analysis.html#cross-section-analyzing-the-relationship-between-temperature-and-yield-across-all-counties-in-2018." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="corn-analysis.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating object for corn yields for 2018</span></span>
+<span id="cb126-2"><a href="corn-analysis.html#cb126-2" aria-hidden="true" tabindex="-1"></a>yields18 <span class="ot">&lt;-</span> cornyields <span class="sc">%&gt;%</span></span>
+<span id="cb126-3"><a href="corn-analysis.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-4"><a href="corn-analysis.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(county_name) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-5"><a href="corn-analysis.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb126-6"><a href="corn-analysis.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(county_ansi))</span>
+<span id="cb126-7"><a href="corn-analysis.html#cb126-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-8"><a href="corn-analysis.html#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="co">#creating object for temperature for 2018</span></span>
+<span id="cb126-9"><a href="corn-analysis.html#cb126-9" aria-hidden="true" tabindex="-1"></a>temp18 <span class="ot">&lt;-</span> tmaxdf <span class="sc">%&gt;%</span></span>
+<span id="cb126-10"><a href="corn-analysis.html#cb126-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(countyfp) <span class="sc">%&gt;%</span></span>
+<span id="cb126-11"><a href="corn-analysis.html#cb126-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-12"><a href="corn-analysis.html#cb126-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(doy <span class="sc">&gt;=</span> <span class="dv">152</span> <span class="sc">&amp;</span> doy <span class="sc">&lt;=</span> <span class="dv">243</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb126-13"><a href="corn-analysis.html#cb126-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meantmax =</span> <span class="fu">mean</span>(tmax)) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-14"><a href="corn-analysis.html#cb126-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">county_ansi =</span> <span class="st">&quot;countyfp&quot;</span>)</span>
+<span id="cb126-15"><a href="corn-analysis.html#cb126-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-16"><a href="corn-analysis.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="co">#making counties numeric</span></span>
+<span id="cb126-17"><a href="corn-analysis.html#cb126-17" aria-hidden="true" tabindex="-1"></a>temp18<span class="sc">$</span>county_ansi <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(temp18<span class="sc">$</span>county_ansi))</span>
+<span id="cb126-18"><a href="corn-analysis.html#cb126-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-19"><a href="corn-analysis.html#cb126-19" aria-hidden="true" tabindex="-1"></a><span class="co">#pulling temperature and yield across all counties in 2018 </span></span>
+<span id="cb126-20"><a href="corn-analysis.html#cb126-20" aria-hidden="true" tabindex="-1"></a>combo18 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(yields18, temp18, <span class="at">by =</span> <span class="st">&#39;county_ansi&#39;</span>)</span>
+<span id="cb126-21"><a href="corn-analysis.html#cb126-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-22"><a href="corn-analysis.html#cb126-22" aria-hidden="true" tabindex="-1"></a><span class="co">#adding column for squared mean temp</span></span>
+<span id="cb126-23"><a href="corn-analysis.html#cb126-23" aria-hidden="true" tabindex="-1"></a>combo18<span class="sc">$</span>meantmaxsq <span class="ot">&lt;-</span> combo18<span class="sc">$</span>meantmax<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb126-24"><a href="corn-analysis.html#cb126-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-25"><a href="corn-analysis.html#cb126-25" aria-hidden="true" tabindex="-1"></a><span class="co">#linear model </span></span>
+<span id="cb126-26"><a href="corn-analysis.html#cb126-26" aria-hidden="true" tabindex="-1"></a>lm_combo18 <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield<span class="sc">~</span>meantmax <span class="sc">+</span> meantmaxsq, <span class="at">data =</span> combo18)</span>
+<span id="cb126-27"><a href="corn-analysis.html#cb126-27" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_combo18)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = yield ~ meantmax + meantmaxsq, data = combo18)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -44.221 -15.399   5.007  14.541  30.879 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) -5501.602   1860.830  -2.957  0.00397 **
+## meantmax      406.789    131.493   3.094  0.00263 **
+## meantmaxsq     -7.256      2.321  -3.126  0.00239 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 18.75 on 90 degrees of freedom
+## Multiple R-squared:  0.1317, Adjusted R-squared:  0.1124 
+## F-statistic: 6.827 on 2 and 90 DF,  p-value: 0.001736</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="corn-analysis.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding columns for fitted values and squared temp</span></span>
+<span id="cb128-2"><a href="corn-analysis.html#cb128-2" aria-hidden="true" tabindex="-1"></a>combo18<span class="sc">$</span>quadfitted <span class="ot">&lt;-</span> lm_combo18<span class="sc">$</span>fitted.values</span>
+<span id="cb128-3"><a href="corn-analysis.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="corn-analysis.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the data</span></span>
+<span id="cb128-5"><a href="corn-analysis.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combo18)<span class="sc">+</span></span>
+<span id="cb128-6"><a href="corn-analysis.html#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> meantmax, <span class="at">y =</span> yield))<span class="sc">+</span></span>
+<span id="cb128-7"><a href="corn-analysis.html#cb128-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> meantmax, <span class="at">y =</span> quadfitted))<span class="sc">+</span></span>
+<span id="cb128-8"><a href="corn-analysis.html#cb128-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb128-9"><a href="corn-analysis.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;yield&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Tmax (°C)&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Temperature vs. Yield Across All Counties in 2018&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/corncross-1.png" width="672" /></p>
+<p>The p-value that we get from running the linear model, is 0.06308, which is larger than alpha. This means that there is not enough evidence to support that there is a correlation between temperature and yield across all counties in 2018.</p>
+</div>
+<div id="panel-plot-comparing-actual-and-fitted-yields-and-interpret-the-results-of-your-model." class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Panel: Plot comparing actual and fitted yields and interpret the results of your model.<a href="corn-analysis.html#panel-plot-comparing-actual-and-fitted-yields-and-interpret-the-results-of-your-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="corn-analysis.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a summer temperature across counties</span></span>
+<span id="cb129-2"><a href="corn-analysis.html#cb129-2" aria-hidden="true" tabindex="-1"></a>summertemp <span class="ot">&lt;-</span> tmaxdf <span class="sc">%&gt;%</span></span>
+<span id="cb129-3"><a href="corn-analysis.html#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(doy <span class="sc">&gt;=</span> <span class="dv">152</span> <span class="sc">&amp;</span> doy <span class="sc">&lt;=</span> <span class="dv">243</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb129-4"><a href="corn-analysis.html#cb129-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, countyfp) <span class="sc">%&gt;%</span></span>
+<span id="cb129-5"><a href="corn-analysis.html#cb129-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">county_ansi =</span> countyfp)<span class="sc">%&gt;%</span></span>
+<span id="cb129-6"><a href="corn-analysis.html#cb129-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">meantmax =</span> <span class="fu">mean</span>(tmax))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="corn-analysis.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co">#changing the counties to a factor </span></span>
+<span id="cb131-2"><a href="corn-analysis.html#cb131-2" aria-hidden="true" tabindex="-1"></a>cornyields<span class="sc">$</span>county_ansi <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cornyields<span class="sc">$</span>county_ansi)</span>
+<span id="cb131-3"><a href="corn-analysis.html#cb131-3" aria-hidden="true" tabindex="-1"></a>summertemp<span class="sc">$</span>county_ansi <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(summertemp<span class="sc">$</span>county_ansi)</span>
+<span id="cb131-4"><a href="corn-analysis.html#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="corn-analysis.html#cb131-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-6"><a href="corn-analysis.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="co">#joining yield and temperature together</span></span>
+<span id="cb131-7"><a href="corn-analysis.html#cb131-7" aria-hidden="true" tabindex="-1"></a>countysummer <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(summertemp, cornyields) <span class="sc">%&gt;%</span></span>
+<span id="cb131-8"><a href="corn-analysis.html#cb131-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code></pre></div>
+<pre><code>## Joining, by = c(&quot;year&quot;, &quot;county_ansi&quot;)</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="corn-analysis.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(countysummer)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+## # Groups:   year [1]
+##    year county_ansi meantmax county_name yield
+##   &lt;dbl&gt; &lt;fct&gt;          &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+## 1  1981 93              27.5 IDA          109.
+## 2  1981 147             27.1 PALO ALTO    137.
+## 3  1981 13              26.6 BLACK HAWK   132.
+## 4  1981 99              27.8 JASPER       124.
+## 5  1981 195             26.5 WORTH        119.
+## 6  1981 67              26.9 FLOYD        129.</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="corn-analysis.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co">#adding squared mean to columns</span></span>
+<span id="cb135-2"><a href="corn-analysis.html#cb135-2" aria-hidden="true" tabindex="-1"></a>countysummer<span class="sc">$</span>meantmaxsq <span class="ot">&lt;-</span> countysummer<span class="sc">$</span>meantmax<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb135-3"><a href="corn-analysis.html#cb135-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="corn-analysis.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co">#creating a linear model</span></span>
+<span id="cb135-5"><a href="corn-analysis.html#cb135-5" aria-hidden="true" tabindex="-1"></a>lm_countysummer <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> meantmax <span class="sc">+</span> meantmaxsq <span class="sc">+</span>county_ansi <span class="sc">+</span> year, countysummer) </span>
+<span id="cb135-6"><a href="corn-analysis.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_countysummer)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = yield ~ meantmax + meantmaxsq + county_ansi + year, 
+##     data = countysummer)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -81.645  -9.720   1.924  13.232  40.409 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    -5.815e+03  9.802e+01 -59.319  &lt; 2e-16 ***
+## meantmax        1.182e+02  6.108e+00  19.352  &lt; 2e-16 ***
+## meantmaxsq     -2.225e+00  1.085e-01 -20.503  &lt; 2e-16 ***
+## county_ansi147 -4.601e+00  4.322e+00  -1.065 0.287100    
+## county_ansi13  -4.573e+00  4.322e+00  -1.058 0.290041    
+## county_ansi99   2.537e+00  4.322e+00   0.587 0.557264    
+## county_ansi195 -5.740e+00  4.339e+00  -1.323 0.186000    
+## county_ansi67  -7.072e+00  4.324e+00  -1.636 0.102029    
+## county_ansi107 -9.660e+00  4.325e+00  -2.233 0.025596 *  
+## county_ansi15   3.120e+00  4.322e+00   0.722 0.470379    
+## county_ansi57  -1.366e+00  4.327e+00  -0.316 0.752212    
+## county_ansi127  2.318e+00  4.321e+00   0.536 0.591719    
+## county_ansi123 -3.711e+00  4.325e+00  -0.858 0.390951    
+## county_ansi81  -3.157e+00  4.327e+00  -0.729 0.465744    
+## county_ansi129 -1.637e+00  4.396e+00  -0.372 0.709703    
+## county_ansi1   -1.186e+01  4.325e+00  -2.743 0.006124 ** 
+## county_ansi175 -2.341e+01  4.354e+00  -5.377 8.03e-08 ***
+## county_ansi19  -4.212e+00  4.324e+00  -0.974 0.330092    
+## county_ansi37  -9.693e+00  4.328e+00  -2.240 0.025182 *  
+## county_ansi109  3.589e-01  4.324e+00   0.083 0.933863    
+## county_ansi165 -4.189e+00  4.322e+00  -0.969 0.332408    
+## county_ansi51  -2.644e+01  4.360e+00  -6.063 1.47e-09 ***
+## county_ansi69  -5.518e-01  4.322e+00  -0.128 0.898414    
+## county_ansi137 -5.977e+00  4.330e+00  -1.381 0.167514    
+## county_ansi9   -6.795e+00  4.322e+00  -1.572 0.115958    
+## county_ansi87  -6.583e+00  4.328e+00  -1.521 0.128366    
+## county_ansi5   -9.147e+00  4.329e+00  -2.113 0.034697 *  
+## county_ansi189 -3.627e+00  4.330e+00  -0.838 0.402306    
+## county_ansi53  -2.790e+01  4.356e+00  -6.404 1.70e-10 ***
+## county_ansi121 -1.445e+01  4.324e+00  -3.342 0.000841 ***
+## county_ansi191 -7.295e+00  4.335e+00  -1.683 0.092484 .  
+## county_ansi71   1.715e+00  4.344e+00   0.395 0.692933    
+## county_ansi135 -2.771e+01  4.354e+00  -6.365 2.20e-10 ***
+## county_ansi23  -2.774e+00  4.321e+00  -0.642 0.520945    
+## county_ansi179 -1.508e+01  4.358e+00  -3.461 0.000544 ***
+## county_ansi11  -4.677e+00  4.321e+00  -1.082 0.279184    
+## county_ansi193 -9.064e+00  4.323e+00  -2.097 0.036096 *  
+## county_ansi117 -3.354e+01  4.385e+00  -7.650 2.56e-14 ***
+## county_ansi139 -3.580e+00  4.324e+00  -0.828 0.407827    
+## county_ansi141  2.369e+00  4.321e+00   0.548 0.583576    
+## county_ansi3   -1.639e+01  4.325e+00  -3.790 0.000153 ***
+## county_ansi29  -5.718e+00  4.325e+00  -1.322 0.186209    
+## county_ansi7   -3.014e+01  4.355e+00  -6.922 5.22e-12 ***
+## county_ansi95  -4.648e+00  4.322e+00  -1.075 0.282230    
+## county_ansi77  -8.484e+00  4.324e+00  -1.962 0.049814 *  
+## county_ansi55  -2.440e+00  4.326e+00  -0.564 0.572813    
+## county_ansi91  -1.981e+00  4.324e+00  -0.458 0.646825    
+## county_ansi79   1.290e+00  4.321e+00   0.299 0.765255    
+## county_ansi59  -8.957e+00  4.325e+00  -2.071 0.038446 *  
+## county_ansi27  -2.196e+00  4.321e+00  -0.508 0.611316    
+## county_ansi187  2.350e+00  4.321e+00   0.544 0.586618    
+## county_ansi41  -5.251e+00  4.322e+00  -1.215 0.224409    
+## county_ansi45  -1.312e+00  4.321e+00  -0.304 0.761484    
+## county_ansi153  2.166e+00  4.325e+00   0.501 0.616434    
+## county_ansi65  -4.543e+00  4.329e+00  -1.050 0.293954    
+## county_ansi131 -4.578e+00  4.336e+00  -1.056 0.291223    
+## county_ansi143 -3.119e+00  4.326e+00  -0.721 0.470936    
+## county_ansi197 -3.072e-01  4.322e+00  -0.071 0.943331    
+## county_ansi133 -1.106e+01  4.328e+00  -2.556 0.010618 *  
+## county_ansi83   2.088e+00  4.321e+00   0.483 0.629024    
+## county_ansi35   2.034e+00  4.321e+00   0.471 0.637848    
+## county_ansi101 -1.133e+01  4.335e+00  -2.613 0.009012 ** 
+## county_ansi21  -3.222e+00  4.321e+00  -0.746 0.455896    
+## county_ansi105 -4.132e+00  4.322e+00  -0.956 0.339059    
+## county_ansi63  -4.630e+00  4.328e+00  -1.070 0.284740    
+## county_ansi125 -9.943e+00  4.325e+00  -2.299 0.021566 *  
+## county_ansi157 -1.315e+00  4.323e+00  -0.304 0.761057    
+## county_ansi155 -5.942e-01  4.356e+00  -0.136 0.891498    
+## county_ansi169 -6.458e-01  4.321e+00  -0.149 0.881201    
+## county_ansi145 -1.223e+01  4.330e+00  -2.824 0.004764 ** 
+## county_ansi167  3.716e+00  4.321e+00   0.860 0.389950    
+## county_ansi159 -3.257e+01  4.325e+00  -7.529 6.38e-14 ***
+## county_ansi89  -1.092e+01  4.346e+00  -2.513 0.012022 *  
+## county_ansi115 -4.533e+00  4.329e+00  -1.047 0.295100    
+## county_ansi173 -2.591e+01  4.357e+00  -5.947 2.99e-09 ***
+## county_ansi49  -1.050e+00  4.324e+00  -0.243 0.808084    
+## county_ansi151 -3.603e-01  4.321e+00  -0.083 0.933548    
+## county_ansi39  -3.591e+01  4.354e+00  -8.246 2.26e-16 ***
+## county_ansi17  -5.353e-01  4.323e+00  -0.124 0.901456    
+## county_ansi97  -1.325e+01  4.322e+00  -3.065 0.002190 ** 
+## county_ansi85  -4.971e+00  4.327e+00  -1.149 0.250644    
+## county_ansi149 -4.510e+00  4.322e+00  -1.044 0.296759    
+## county_ansi185 -3.376e+01  4.353e+00  -7.754 1.15e-14 ***
+## county_ansi47  -5.335e+00  4.321e+00  -1.235 0.217050    
+## county_ansi111 -1.008e+01  4.335e+00  -2.326 0.020060 *  
+## county_ansi177 -1.714e+01  4.343e+00  -3.947 8.08e-05 ***
+## county_ansi75  -3.522e-01  4.321e+00  -0.081 0.935055    
+## county_ansi181 -1.402e+01  4.325e+00  -3.242 0.001198 ** 
+## county_ansi31   3.927e+00  4.321e+00   0.909 0.363477    
+## county_ansi25  -1.476e+00  4.321e+00  -0.342 0.732672    
+## county_ansi61  -2.068e+00  4.328e+00  -0.478 0.632814    
+## county_ansi113 -5.448e+00  4.321e+00  -1.261 0.207502    
+## county_ansi183 -1.446e+00  4.328e+00  -0.334 0.738278    
+## county_ansi33  -7.281e+00  4.326e+00  -1.683 0.092484 .  
+## county_ansi43  -2.998e+00  4.326e+00  -0.693 0.488271    
+## county_ansi73   2.754e+00  4.323e+00   0.637 0.524176    
+## county_ansi161 -2.473e+00  4.321e+00  -0.572 0.567164    
+## county_ansi103 -7.483e+00  4.322e+00  -1.731 0.083476 .  
+## county_ansi119 -2.534e+00  4.321e+00  -0.586 0.557604    
+## county_ansi163  4.415e+00  4.321e+00   1.022 0.306959    
+## county_ansi171 -2.122e+00  4.321e+00  -0.491 0.623334    
+## year            2.203e+00  2.836e-02  77.664  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 18.83 on 3646 degrees of freedom
+## Multiple R-squared:  0.7207, Adjusted R-squared:  0.7129 
+## F-statistic: 93.13 on 101 and 3646 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="corn-analysis.html#cb137-1" aria-hidden="true" tabindex="-1"></a>countysummer<span class="sc">$</span>fittedyield <span class="ot">&lt;-</span> lm_countysummer<span class="sc">$</span>fitted.values</span>
+<span id="cb137-2"><a href="corn-analysis.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="corn-analysis.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting the data</span></span>
+<span id="cb137-4"><a href="corn-analysis.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(countysummer) <span class="sc">+</span></span>
+<span id="cb137-5"><a href="corn-analysis.html#cb137-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fittedyield , <span class="at">y =</span> yield))<span class="sc">+</span></span>
+<span id="cb137-6"><a href="corn-analysis.html#cb137-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb137-7"><a href="corn-analysis.html#cb137-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb137-8"><a href="corn-analysis.html#cb137-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Panel Regression Plot for Yields vs. Fitted&quot;</span>, <span class="at">x=</span><span class="st">&quot;Fitted Yield Values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Yield Values&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>One way to leverage multiple time series is to group all data into what is called a “panel” regression. I converted the county ID code (“countyfp” or “county_ansi”) into factor using as.factor, then included this variable in a regression using all counties’ yield and summer temperature data. The linear model gives us an R squared value of 0.7207. This is a relatively high R squared value, which means that the data has a stronger goodness of fit. Therefore, the fitted values are well predicted in comparison to the actual yields. Because the data closely follows a 45 degree angle we can come to this conclusion.</p>
+</div>
+<div id="soybeans-time-series-plot" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Soybeans: Time series plot<a href="corn-analysis.html#soybeans-time-series-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="corn-analysis.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set our API key with NASS</span></span>
+<span id="cb138-2"><a href="corn-analysis.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nassqs_auth</span>(<span class="at">key =</span> <span class="st">&quot;693A4922-893D-3AF4-A23B-6288B220EC7E&quot;</span>)</span>
+<span id="cb138-3"><a href="corn-analysis.html#cb138-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-4"><a href="corn-analysis.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters to query on </span></span>
+<span id="cb138-5"><a href="corn-analysis.html#cb138-5" aria-hidden="true" tabindex="-1"></a>params2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">commodity_desc =</span> <span class="st">&quot;SOYBEANS&quot;</span>, <span class="at">statisticcat_desc=</span><span class="st">&quot;YIELD&quot;</span>, <span class="at">prodn_practice_desc =</span> <span class="st">&quot;ALL PRODUCTION PRACTICES&quot;</span>, <span class="at">year__GE =</span> <span class="dv">1981</span>, <span class="at">state_alpha =</span> <span class="st">&quot;IA&quot;</span>)</span>
+<span id="cb138-6"><a href="corn-analysis.html#cb138-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-7"><a href="corn-analysis.html#cb138-7" aria-hidden="true" tabindex="-1"></a>soybeanyieldsall <span class="ot">&lt;-</span> <span class="fu">nassqs_yields</span>(params2)</span>
+<span id="cb138-8"><a href="corn-analysis.html#cb138-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-9"><a href="corn-analysis.html#cb138-9" aria-hidden="true" tabindex="-1"></a>soybeanyieldsall<span class="sc">$</span>county_ansi <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(soybeanyieldsall<span class="sc">$</span>county_ansi)</span>
+<span id="cb138-10"><a href="corn-analysis.html#cb138-10" aria-hidden="true" tabindex="-1"></a>soybeanyieldsall<span class="sc">$</span>yield <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(soybeanyieldsall<span class="sc">$</span>Value)</span>
+<span id="cb138-11"><a href="corn-analysis.html#cb138-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-12"><a href="corn-analysis.html#cb138-12" aria-hidden="true" tabindex="-1"></a><span class="co"># clean and filter this dataset</span></span>
+<span id="cb138-13"><a href="corn-analysis.html#cb138-13" aria-hidden="true" tabindex="-1"></a>soyyields <span class="ot">&lt;-</span> <span class="fu">select</span>(soybeanyieldsall, county_ansi, county_name, yield, year) <span class="sc">%&gt;%</span></span>
+<span id="cb138-14"><a href="corn-analysis.html#cb138-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(county_ansi) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(yield))</span>
+<span id="cb138-15"><a href="corn-analysis.html#cb138-15" aria-hidden="true" tabindex="-1"></a>soyyields <span class="ot">&lt;-</span> <span class="fu">tibble</span>(soyyields)</span>
+<span id="cb138-16"><a href="corn-analysis.html#cb138-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-17"><a href="corn-analysis.html#cb138-17" aria-hidden="true" tabindex="-1"></a>winnesoyyield <span class="ot">&lt;-</span> soyyields <span class="sc">%&gt;%</span></span>
+<span id="cb138-18"><a href="corn-analysis.html#cb138-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(county_ansi<span class="sc">==</span><span class="st">&quot;191&quot;</span>)</span>
+<span id="cb138-19"><a href="corn-analysis.html#cb138-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-20"><a href="corn-analysis.html#cb138-20" aria-hidden="true" tabindex="-1"></a><span class="co">#fitting a linear time trend</span></span>
+<span id="cb138-21"><a href="corn-analysis.html#cb138-21" aria-hidden="true" tabindex="-1"></a>lm_winnesoyyield <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> year, <span class="at">data =</span> winnesoyyield)</span>
+<span id="cb138-22"><a href="corn-analysis.html#cb138-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_winnesoyyield)</span>
+<span id="cb138-23"><a href="corn-analysis.html#cb138-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-24"><a href="corn-analysis.html#cb138-24" aria-hidden="true" tabindex="-1"></a><span class="co">#plotting Winneshiek&#39;s soybean yields with linear trend</span></span>
+<span id="cb138-25"><a href="corn-analysis.html#cb138-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(winnesoyyield, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> yield)) <span class="sc">+</span></span>
+<span id="cb138-26"><a href="corn-analysis.html#cb138-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb138-27"><a href="corn-analysis.html#cb138-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb138-28"><a href="corn-analysis.html#cb138-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;yield&quot;</span>, <span class="at">title =</span> ) <span class="sc">+</span></span>
+<span id="cb138-29"><a href="corn-analysis.html#cb138-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/cornyield%20download-1.png" width="672" /></p>
+<p>I downloaded NASS data on soybean yields and explored a time series relationship for Winneshiek county.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lagos-analysis-part-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/maddiebean21/bookdown_final/edit/master/5-corn.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/maddiebean21/bookdown_final/blob/master/5-corn.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

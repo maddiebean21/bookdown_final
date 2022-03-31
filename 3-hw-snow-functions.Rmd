@@ -1,6 +1,6 @@
 # Snow Data Example
 
-In this assignment, I explored web scraping, different functions and iterations by using a data set from the Center for Snow and Avalanche Studies  [Website](https://snowstudies.org/archived-data/) and read a table in. This table contains links to data I want and to programatically download for three sites. I don't know much about these sites, but they contain incredibly rich snow, temperature, and precip data. 
+In this assignment, I explored web scraping, different functions and iterations by using a data set from the Center for Snow and Avalanche Studies  [Website](https://snowstudies.org/archived-data/) and read a table in. This table contains links to data I want and to programatically download for three sites. I don't know much about these sites, but they contain incredibly rich snow, temperature, and precipitation data. 
 
 ```{r snowsetup, include=FALSE}
 library(rvest)

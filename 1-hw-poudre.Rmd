@@ -1,6 +1,7 @@
-#Poudre River Interactive Graph
 
-The Poudre River runs through northern Colorado, passing through Fort Collins, CO. In this assignment, we look at the the annual discharge of the river to determine annual patterns and severe weather events.
+# Poudre River Interactive Graph
+
+The Poudre River runs through northern Colorado, passing through Fort Collins, CO. In this assignment, I looked at the the annual discharge of the river to determine annual patterns and severe weather events.
 
 ```{r poudresetup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

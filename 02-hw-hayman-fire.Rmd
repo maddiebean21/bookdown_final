@@ -1,6 +1,6 @@
 # Hayman Fire Recovery 
 
-The [Hayman Fire](https://en.wikipedia.org/wiki/Hayman_Fire) occurred on June 8th, 2002. This was the largest wildfire in Colorado's history until 2020, burning over 138,000 acres of land. In this assignment, we looked at how the fire affected vegetation growth in the area. 
+The [Hayman Fire](https://en.wikipedia.org/wiki/Hayman_Fire) occurred on June 8th, 2002. This was the largest wildfire in Colorado's history until 2020, burning over 138,000 acres of land. In this assignment, I looked at how the fire affected vegetation growth in the area. 
 
 ```{r firesetup, warning=F,message=F}
 library(tidyverse)
@@ -47,7 +47,7 @@ full_long <- rbind(ndvi,ndmi,ndsi) %>%
 
 ## NDVI and NDMI Correlation 
 
-In order to find the correlation between NDVI and NDMI, we converted the full_long dataset into a wide dataset using the function "spread" and then made a plot of this function, grouped by unburned vs burned sites. We excluded winter months and focused on summer months because vegetation does not generally grow in the winter.
+In order to find the correlation between NDVI and NDMI, I converted the full_long dataset into a wide dataset using the function "spread" and then made a plot of this function, grouped by unburned vs burned sites. I excluded winter months and focused on summer months because vegetation does not generally grow in the winter.
 
 ```{r firewidedata}
 #changing data into wide
@@ -72,7 +72,7 @@ There is a strong, positive correlation between NDMI and NDVI.
 
 ## Average NDSI and NDVI Correlation
 
-In order to find the correlation between the average NDSI and NDVI, we used the data points for NDSI only during January - April (snow season) and only data points for NDVI during June - August (vegetation growth season). We found that there is a low positive correlation of 0.180 between snow coverage and vegetation. This means that the previous year's snow cover has little effect on the vegetation growth for the following summer and that this correlation could be from other factors in the environment. Looking at the graph, you can see a difference in correlation between NDVI and NDSI burned and un-burned sites.
+In order to find the correlation between the average NDSI and NDVI, I used the data points for NDSI only during January - April (snow season) and only data points for NDVI during June - August (vegetation growth season). I found that there is a low positive correlation of 0.180 between snow coverage and vegetation. This means that the previous year's snow cover has little effect on the vegetation growth for the following summer and that this correlation could be from other factors in the environment. Looking at the graph, you can see a difference in correlation between NDVI and NDSI burned and un-burned sites.
  
 ```{r fireNDSINDVI, warning=F, message=F}
 #variable ndsi months
@@ -109,7 +109,7 @@ ggplot(combined, aes(x=ndsi_avg, y=ndvi_avg, color=site)) +
  
 ## Snow Effect Differences
 
-We then looked at the difference of snow effect from the previous correlation between pre- and post-burn and burned and unburned.
+I then looked at the difference of snow effect from the previous correlation between pre- and post-burn and burned and unburned.
 
 ```{r firesnoweffect, warning=F, message=F}
 #snow effect pre-burn
@@ -244,7 +244,7 @@ The snow effect from question 2 is a more generalized correlation. While all of 
 
 ## Average Greenest Month
 
-Here, we looked at which month was the greenest, on average. We discovered that August was the greenest month.
+Here, I looked at which month was the greenest, on average. We discovered that August was the greenest month.
 
 ```{r warning=F, message=F}
 #creating an object for the average vegetation for each month
@@ -262,7 +262,7 @@ ggplot(ndvigreenest, aes(x=month, y=ndvi)) +
 
 ## Average Snowiest Month
 
-Next, we looked at which month was the snowiest on average. January was the snowiest month.
+Next, I looked at which month was the snowiest on average. January was the snowiest month.
 
 ```{r warning=F, message=F}
 #creating snow object

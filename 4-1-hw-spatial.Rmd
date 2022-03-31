@@ -1,4 +1,8 @@
 
+# LAGOS Analysis part 1
+
+In this assignment, I used the R package 'sf' and other R packages to explore spatial operations in R markdown. I used data from LAGOS database to look at clean lake data in Minnesota, Illinois, and Iowa. 
+
 ```{r foursetup, include=FALSE}
 library(tidyverse) # Tidy packages
 library(sf) #Spatial package that can read and create shapefiles 
@@ -7,10 +11,6 @@ library(LAGOSNE) #Lots and lots of clean lake data
 library(USAboundaries) #USA states and counties
 #install.packages(c("RApiSerialize", "LAGOSNE", 'USAboundaries'))
 ```
-
-
-# LAGOS Analysis part 1
-
 
 ## Loading in data
 

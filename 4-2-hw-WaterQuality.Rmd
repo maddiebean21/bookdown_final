@@ -1,3 +1,6 @@
+# LAGOS Analysis Part 2
+
+In this second part of the LAGOS Analysis assignment, I also explored spatial operations in R. In this assignment however, I looked at the water quality in lakes and how secchi disk depth is correlated to the amount of chlorophyll in the lake. I also looked at the amount of data for each state.
 
 ```{r lagossetup, include=FALSE}
 library(tidyverse) # Tidy packages
@@ -7,10 +10,6 @@ library(LAGOSNE) #Lots and lots of clean lake data
 library(USAboundaries) #USA states and counties
 library(lubridate) #For dealing with date and time
 ```
-
-
-# LAGOS Analysis Part 2
-
 
 ## Loading in data
 
@@ -39,7 +38,6 @@ nutr <- lagos$epi_nutr
 ```
 
 ### Subset columns nutr to only keep key info that I wanted
-
 
 ```{r lagossubset}
 clarity_only <- nutr %>%
