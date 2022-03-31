@@ -112,7 +112,7 @@ mapview(mean_spatial,zcol='log10_mean_chl')
 
 - Here, I plotted chla vs secchi for all sites 
 
-```{r lagosplot}
+```{r lagosplot, warning=FALSE}
 #plotting chla vs secchi for sites with at least 200 observations
 ggplot(chla_secchi_200, aes(x=chla, y = secchi)) +
   geom_point(color = "darkblue")+

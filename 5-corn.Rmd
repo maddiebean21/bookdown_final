@@ -14,7 +14,7 @@ library(rnassqs)
 
 ### Load the PRISM daily maximum temperatures
 
-```{r corntmax data}
+```{r corntmax data, warning=FALSE}
 
 #daily max temperature
 #dimensions: counties by days by years
@@ -254,7 +254,7 @@ The p-value that we get from running the linear model, is 0.06308, which is larg
 
 ## Panel: Plot comparing actual and fitted yields and interpret the results of your model.
 
-```{r}
+```{r cornplot, warning=FALSE, message=FALSE}
 #creating a summer temperature across counties
 summertemp <- tmaxdf %>%
   filter(doy >= 152 & doy <= 243) %>%

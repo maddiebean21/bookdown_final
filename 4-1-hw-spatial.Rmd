@@ -17,7 +17,7 @@ library(USAboundaries) #USA states and counties
 
 ### First download and then specifically grab the locus (or site lat longs)
 
-```{r fourdata-read}
+```{r fourdata-read, warning=FALSE}
 # #Lagos download script
 LAGOSNE::lagosne_get(dest_folder = LAGOSNE:::lagos_path())
 
@@ -122,7 +122,7 @@ Combined, there are 16,466 lakes in Illinois and Iowa. Minnesota alone, has 29,0
 Here I made a histogram plot with lake size on x-axis and frequency on 
 y axis.
 
-```{r fourhistogram}
+```{r fourhistogram, warning = FALSE}
 #making iowa lakes 
 iowa_lakes <- spatial_lakes[iowa,]
 

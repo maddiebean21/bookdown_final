@@ -2,7 +2,7 @@
 
 The [Hayman Fire](https://en.wikipedia.org/wiki/Hayman_Fire) occurred on June 8th, 2002. This was the largest wildfire in Colorado's history until 2020, burning over 138,000 acres of land. In this assignment, I looked at how the fire affected vegetation growth in the area. 
 
-```{r firesetup, warning=F,message=F}
+```{r firesetup, warning=F, message=F, include=FALSE}
 library(tidyverse)
 library(tidyr)
 library(ggthemes)
